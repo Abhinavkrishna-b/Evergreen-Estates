@@ -8,7 +8,7 @@ function Navbar() {
     <nav>
       <div className="left">
         <a href="/" className="logo">
-          <img src="../../../public/logo.png" alt="logo" />
+          <img src="/logo.png" alt="logo" />
           <span>Evergreen-Estate</span>
         </a>
         <a href="/">Home</a>
@@ -18,22 +18,14 @@ function Navbar() {
       </div>
 
       <div className="right">
-        <div className="user">
-          <img
-            src="https://images.pexels.com/photos/91227/pexels-photo-91227.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-            alt="user"
-          />
-          <span>Muruga</span>
-
-          <a href="/profile" className="profile">
-            <div className="notification">3</div>
-            <span>Profile</span>
-          </a>
-        </div>
+        <a href="/">Sign in</a>
+        <a href="/" className="register">
+          Sign up
+        </a>
 
         <div className="menuIcon">
           <img
-            src="../../../public/menu.png"
+            src="/menu.png"
             alt="menu"
             onClick={() => setOpen(!open)}
           />

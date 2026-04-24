@@ -1,20 +1,20 @@
-/* RESET (removes default browser spacing) */
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* NAVBAR */
 nav {
   width: 100%;
   height: 100px;
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  padding: 0 20px;
 }
 
-/* LINKS */
 nav a {
   transition: all 0.4s ease;
   text-decoration: none;
@@ -25,16 +25,13 @@ nav a:hover {
   transform: scale(1.05);
 }
 
-/* LEFT SECTION */
 .left {
   flex: 3;
   display: flex;
   align-items: center;
   gap: 50px;
-  padding-left: 40px;
 }
 
-/* LOGO */
 .logo {
   font-weight: bold;
   font-size: 20px;
@@ -47,7 +44,6 @@ nav a:hover {
   width: 28px;
 }
 
-/* RIGHT SECTION */
 .right {
   flex: 2;
   display: flex;
@@ -55,16 +51,14 @@ nav a:hover {
   justify-content: flex-end;
   background-color: #fcf5f3;
   height: 100%;
-  padding-right: 40px;
+  min-width: 0;
 }
 
-/* RIGHT LINKS */
 .right a {
   padding: 12px 24px;
-  margin: 20px;
+  margin-left: 20px;
 }
 
-/* USER */
 .user {
   display: flex;
   align-items: center;
@@ -79,7 +73,6 @@ nav a:hover {
   margin-right: 20px;
 }
 
-/* PROFILE BUTTON */
 .profile {
   padding: 12px 24px;
   background-color: #fece51;
@@ -87,7 +80,6 @@ nav a:hover {
   position: relative;
 }
 
-/* NOTIFICATION BADGE */
 .notification {
   position: absolute;
   top: -8px;
@@ -102,12 +94,10 @@ nav a:hover {
   justify-content: center;
 }
 
-/* REGISTER BUTTON */
 .register {
   background-color: #fece51;
 }
 
-/* MENU ICON */
 .menuIcon {
   display: none;
   z-index: 999;
@@ -119,7 +109,6 @@ nav a:hover {
   cursor: pointer;
 }
 
-/* MOBILE MENU */
 .menu {
   position: fixed;
   top: 0;
@@ -140,7 +129,6 @@ nav a:hover {
   right: 0;
 }
 
-/* RESPONSIVE */
 @media (max-width: 768px) {
   nav a {
     display: none;
