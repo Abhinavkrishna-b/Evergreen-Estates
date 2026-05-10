@@ -1,47 +1,45 @@
-import { useState } from "react";
-import "./../Navbar.css";
+import { useState } from 'react';
+import './Navbar.css';
 
-function Navbar() {
-  const [open, setOpen] = useState(false);
+const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
-    <nav>
-      <div className="left">
-        <a href="/" className="logo">
-          <img src="/logo.png" alt="logo" />
-          <span>Evergreen-Estate</span>
-        </a>
-        <a href="/">Home</a>
-        <a href="/">About</a>
-        <a href="/">Contact</a>
-        <a href="/">Agents</a>
-      </div>
-
-      <div className="right">
-        <a href="/">Sign in</a>
-        <a href="/" className="register">
-          Sign up
-        </a>
-
-        <div className="menuIcon">
-          <img
-            src="/menu.png"
-            alt="menu"
-            onClick={() => setOpen(!open)}
-          />
+    <nav className="navbar">
+      <div className="navbar-container">
+        {/* Logo Section */}
+        <div className="navbar-logo">
+          <span className="logo-icon">🏠</span>
+          <span className="logo-text">Evergreen Estates</span>
         </div>
 
-        <div className={open ? "menu active" : "menu"}>
-          <a href="/">Home</a>
-          <a href="/">About</a>
-          <a href="/">Contact</a>
-          <a href="/">Agents</a>
-          <a href="/">Sign in</a>
-          <a href="/">Sign up</a>
+        {/* Hamburger Menu */}
+        <div 
+          className={`hamburger ${isOpen ? 'active' : ''}`}
+          onClick={toggleMenu}
+        >
+          <span></span>
+          <span></span>
+          <span></span>
         </div>
+
+        {/* Navigation Links */}
+        <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
+          <li><a href="#home" className="nav-link">Home</a></li>
+          <li><a href="#properties" className="nav-link">Properties</a></li>
+          <li><a href="#about" className="nav-link">About</a></li>
+          <li><a href="#contact" className="nav-link">Contact</a></li>
+        </ul>
+
+        {/* CTA Button */}
+        <button className="cta-button">Get Started</button>
       </div>
     </nav>
   );
-}
+};
 
 export default Navbar;
