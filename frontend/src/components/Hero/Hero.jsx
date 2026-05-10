@@ -1,0 +1,112 @@
+import { useState } from 'react';
+import { FiMapPin, FiFilter, FiSearch } from 'react-icons/fi';
+import './Hero.css';
+
+const Hero = () => {
+  const [filters, setFilters] = useState({
+    location: '',
+    propertyType: 'All',
+    priceRange: 'All',
+  });
+
+  const handleFilterChange = (key, value) => {
+    setFilters(prev => ({
+      ...prev,
+      [key]: value
+    }));
+  };
+
+  const handleSearch = () => {
+    console.log('Searching with filters:', filters);
+    // TODO: Navigate to search results
+  };
+
+  return (
+    <section className="hero" id="home">
+      <div className="hero-overlay"></div>
+      
+      <div className="hero-content">
+        <div className="hero-text">
+          <h1 className="hero-title">
+            Find Your Perfect <span className="highlight">Property</span>
+          </h1>
+          <p className="hero-subtitle">
+            Discover premium real estate opportunities with Evergreen Estates
+          </p>
+        </div>
+
+        {/* Search Bar */}
+        <div className="search-container">
+          <div className="search-box">
+            {/* Location Input */}
+            <div className="search-field">
+              <label className="search-label">
+                <FiMapPin className="search-icon" />
+                <span>Location</span>
+              </label>
+              <input
+                type="text"
+                placeholder="Enter city or area"
+                value={filters.location}
+                onChange={(e) => handleFilterChange('location', e.target.value)}
+                className="search-input"
+              />
+            </div>
+
+            {/* Property Type */}
+            <div className="search-field">
+              <label className="search-label">
+                <FiFilter className="search-icon" />
+                <span>Type</span>
+              </label>
+              <select
+                value={filters.propertyType}
+                onChange={(e) => handleFilterChange('propertyType', e.target.value)}
+                className="search-input"
+              >
+                <option>All</option>
+                <option>Apartment</option>
+                <option>House</option>
+                <option>Villa</option>
+                <option>Commercial</option>
+                <option>Land</option>
+              </select>
+            </div>
+
+            {/* Price Range */}
+            <div className="search-field">
+              <label className="search-label">
+                <span>💰 Price Range</span>
+              </label>
+              <select
+                value={filters.priceRange}
+                onChange={(e) => handleFilterChange('priceRange', e.target.value)}
+                className="search-input"
+              >
+                <option>All</option>
+                <option>Under $200K</option>
+                <option>$200K - $500K</option>
+                <option>$500K - $1M</option>
+                <option>$1M+</option>
+              </select>
+            </div>
+
+            {/* Search Button */}
+            <button className="search-button" onClick={handleSearch}>
+              <FiSearch size={20} />
+              <span>Search</span>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll Indicator */}
+      <div className="scroll-indicator">
+        <span>Scroll to explore</span>
+        <div className="scroll-arrow">↓</div>
+      </div>
+    </section>
+  );
+};
+
+export default Hero;

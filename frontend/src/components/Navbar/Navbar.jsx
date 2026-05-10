@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { FiHome, FiMenu, FiX, FiSearch, FiPhone } from 'react-icons/fi';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -13,7 +14,7 @@ const Navbar = () => {
       <div className="navbar-container">
         {/* Logo Section */}
         <div className="navbar-logo">
-          <span className="logo-icon">🏠</span>
+          <FiHome className="logo-icon" size={28} />
           <span className="logo-text">Evergreen Estates</span>
         </div>
 
@@ -22,9 +23,11 @@ const Navbar = () => {
           className={`hamburger ${isOpen ? 'active' : ''}`}
           onClick={toggleMenu}
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          {isOpen ? (
+            <FiX size={24} />
+          ) : (
+            <FiMenu size={24} />
+          )}
         </div>
 
         {/* Navigation Links */}
