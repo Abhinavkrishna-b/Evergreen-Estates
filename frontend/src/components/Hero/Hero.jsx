@@ -84,10 +84,10 @@ const Hero = () => {
                 className="search-input"
               >
                 <option>All</option>
-                <option>Under $200K</option>
-                <option>$200K - $500K</option>
-                <option>$500K - $1M</option>
-                <option>$1M+</option>
+                <option>Under ₹1L</option>
+                <option>₹1L - ₹50L</option>
+                <option>₹50L - ₹1Cr</option>
+                <option>₹1Cr+</option>
               </select>
             </div>
 

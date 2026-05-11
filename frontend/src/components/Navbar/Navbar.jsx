@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { FiHome, FiMenu, FiX, FiSearch, FiPhone } from 'react-icons/fi';
+import {FiMenu, FiX, FiSearch, FiPhone } from 'react-icons/fi';
 import './Navbar.css';
 
 const Navbar = () => {
@@ -14,10 +14,14 @@ const Navbar = () => {
       <div className="navbar-container">
         {/* Logo Section */}
         <div className="navbar-logo">
-          <FiHome className="logo-icon" size={28} />
+          <img
+            src="/logo.png"
+            alt="Evergreen Estates Logo"
+            className="logo-image"
+          />
+          
           <span className="logo-text">Evergreen Estates</span>
-        </div>
-
+      </div>
         {/* Hamburger Menu */}
         <div 
           className={`hamburger ${isOpen ? 'active' : ''}`}
