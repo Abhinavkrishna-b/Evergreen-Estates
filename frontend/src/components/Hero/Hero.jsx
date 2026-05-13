@@ -25,7 +25,7 @@ const Hero = () => {
     <section className="hero" id="home">
       <div className="hero-content">
         {/* Left Side - Featured Property Image */}
-        <div className="hero-left">
+        <div className="hero-left hero-left-enter">
           <div className="featured-property-container">
             <img
               src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop"
@@ -44,7 +44,7 @@ const Hero = () => {
         </div>
 
         {/* Right Side - Search & Title */}
-        <div className="hero-right">
+        <div className="hero-right hero-right-enter">
           <div className="hero-text">
             <h1 className="hero-title">
               Find Your Perfect <span className="highlight">Property</span>
