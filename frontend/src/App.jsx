@@ -1,16 +1,14 @@
-import './App.css'
-import Navbar from './components/Navbar/Navbar';
-import Hero from './components/Hero/Hero';
+import './App.css';
+import Homepage from './routes/Homepage/Homepage';
 
 function App() {
 	return (
 		<div className="app">
-			<Navbar />
 			<main className="main-content">
-				<Hero />
+				<Homepage />
 			</main>
 		</div>
-	)
+	);
 }
 
-export default App
+export default App;

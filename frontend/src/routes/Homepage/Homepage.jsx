@@ -1,42 +1,19 @@
+import Navbar from "../../components/Navbar/Navbar";
+import Hero from "../../components/Hero/Hero";
+import FeaturedProperties from "../../components/FeaturedProperties/FeaturedProperties";
+
 import "./Homepage.css";
 
-function HomePage() {
+function Homepage() {
   return (
-    <div className="homePage">
-      <div className="textContainer">
-        <div className="wrapper">
-          <h1 className="title">Find Real Estate & Get Your Dream Place</h1>
+    <div className="homepage">
+      <Navbar />
 
-          <p>
-            Discover homes, apartments, and properties that match your lifestyle.
-            Whether you're buying, renting, or investing, we make it easy to
-            explore the best options in your preferred location.
-          </p>
+      <Hero />
 
-           {/* <SearchBar />  */}
-
-          <div className="boxes">
-            <div className="box">
-              <h1>16+</h1>
-              <h2>Years of Experience</h2>
-            </div>
-            <div className="box">
-              <h1>200</h1>
-              <h2>Awards Gained</h2>
-            </div>
-            <div className="box">
-              <h1>2000+</h1>
-              <h2>Properties Ready</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div className="imgContainer">
-        <img src="/bg.png" alt="background" />
-      </div>
+      <FeaturedProperties />
     </div>
   );
 }
 
-export default HomePage;
+export default Homepage;

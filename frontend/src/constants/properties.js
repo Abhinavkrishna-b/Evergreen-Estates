@@ -7,7 +7,8 @@ export const featuredProperties = [
     baths: 3,
     sqft: "4,500",
     location: "Bandra, Mumbai",
-    image: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=500&h=400&fit=crop",
     badge: "Featured",
     type: "Villa",
     featured: true,
@@ -20,7 +21,8 @@ export const featuredProperties = [
     baths: 2,
     sqft: "2,200",
     location: "Koramangala, Bangalore",
-    image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=500&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=500&h=400&fit=crop",
     badge: "Hot Deal",
     type: "Apartment",
     featured: true,
@@ -33,7 +35,8 @@ export const featuredProperties = [
     baths: 3,
     sqft: "3,800",
     location: "Dwarka, Delhi",
-    image: "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&h=400&fit=crop",
+    image:
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=500&h=400&fit=crop",
     badge: "New",
     type: "House",
     featured: true,
@@ -46,9 +49,10 @@ export const featuredProperties = [
     baths: 4,
     sqft: "5,200",
     location: "Koregaon Park, Pune",
-    image: "#",
+    image:
+      "https://images.unsplash.com/photo-1494526585095-c41746248156?w=500&h=400&fit=crop",
     badge: "Luxury",
-    type: "Villa",
+    type: "Penthouse",
     featured: true,
   },
   {
@@ -59,7 +63,8 @@ export const featuredProperties = [
     baths: 3,
     sqft: "3,200",
     location: "Calangute, Goa",
-    image: "#",
+    image:
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=500&h=400&fit=crop",
     badge: "Featured",
     type: "Villa",
     featured: true,
@@ -72,7 +77,8 @@ export const featuredProperties = [
     baths: 2,
     sqft: "2,100",
     location: "HITEC City, Hyderabad",
-    image: "#",
+    image:
+      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=500&h=400&fit=crop",
     badge: "Smart",
     type: "Apartment",
     featured: true,
