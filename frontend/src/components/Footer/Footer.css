@@ -1,0 +1,155 @@
+.footer {
+  background: #0f1720;
+  color: white;
+
+  margin-top: 70px;
+  padding-top: 56px;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+
+  gap: 40px;
+
+  padding-bottom: 42px;
+
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+/* Brand */
+.footer-logo {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  margin-bottom: 18px;
+}
+
+.footer-logo-image {
+  width: 42px;
+  height: 42px;
+
+  object-fit: contain;
+
+  filter: brightness(0) invert(1);
+}
+
+.footer-logo-text {
+  font-size: 1.5rem;
+  font-weight: 700;
+
+  letter-spacing: -0.5px;
+}
+
+.footer-description {
+  max-width: 360px;
+
+  color: rgba(255,255,255,0.72);
+
+  line-height: 1.65;
+  font-size: 0.98rem;
+}
+
+/* Columns */
+.footer-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.footer-column h3 {
+  font-size: 1rem;
+  margin-bottom: 16px;
+
+  color: white;
+}
+
+.footer-column a,
+.footer-column p {
+  color: rgba(255,255,255,0.7);
+
+  margin-bottom: 10px;
+
+  font-size: 0.95rem;
+
+  transition: color 0.3s ease;
+}
+
+.footer-column a:hover {
+  color: white;
+}
+
+/* Bottom */
+.footer-bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 18px 0;
+}
+
+.footer-bottom p {
+  color: rgba(255,255,255,0.55);
+  font-size: 0.9rem;
+}
+
+.footer-bottom-links {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.footer-bottom-links a {
+  color: rgba(255,255,255,0.55);
+
+  font-size: 0.9rem;
+
+  transition: color 0.3s ease;
+}
+
+.footer-bottom-links a:hover {
+  color: white;
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+
+  .footer-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+
+  .footer {
+    padding-top: 60px;
+  }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+
+    gap: 40px;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .footer {
+    margin-top: 70px;
+  }
+
+  .footer-logo-text {
+    font-size: 1.3rem;
+  }
+
+  .footer-description {
+    font-size: 0.94rem;
+  }
+}

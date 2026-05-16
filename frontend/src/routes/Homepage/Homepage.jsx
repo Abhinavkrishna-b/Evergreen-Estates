@@ -1,6 +1,7 @@
 import Navbar from "../../components/Navbar/Navbar";
 import Hero from "../../components/Hero/Hero";
 import FeaturedProperties from "../../components/FeaturedProperties/FeaturedProperties";
+import Footer from "../../components/Footer/Footer"
 
 import "./Homepage.css";
 
@@ -12,6 +13,8 @@ function Homepage() {
       <Hero />
 
       <FeaturedProperties />
+
+      <Footer />
     </div>
   );
 }
