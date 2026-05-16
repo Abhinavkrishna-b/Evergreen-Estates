@@ -66,36 +66,48 @@
 }
 
 /* Property Info Overlay */
-.property-info-overlay {
+.hero-property-info-overlay {
   position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.5) 60%, transparent 100%);
+
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.92) 0%,
+    rgba(0, 0, 0, 0.55) 55%,
+    transparent 100%
+  );
+
   padding: 80px 40px 40px;
+
   color: white;
+
   display: flex;
   flex-direction: column;
   gap: 10px;
+
+  z-index: 2;
 }
 
-.property-price {
+.hero-property-price {
   font-size: 1.8rem;
   font-weight: 800;
   color: #E5F5F3;
   letter-spacing: -0.5px;
 }
 
-.property-type {
+.hero-property-type {
   font-size: 1rem;
   font-weight: 600;
   color: white;
 }
 
-.property-location {
+.hero-property-location {
   display: flex;
   align-items: center;
   gap: 6px;
+
   font-size: 0.9rem;
   color: #ddd;
 }

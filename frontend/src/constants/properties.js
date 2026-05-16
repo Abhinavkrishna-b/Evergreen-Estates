@@ -43,20 +43,6 @@ export const featuredProperties = [
   },
   {
     id: 4,
-    title: "Premium Penthouse in Pune",
-    price: "₹3,50,00,000",
-    beds: 4,
-    baths: 4,
-    sqft: "5,200",
-    location: "Koregaon Park, Pune",
-    image:
-      "https://images.unsplash.com/photo-1494526585095-c41746248156?w=500&h=400&fit=crop",
-    badge: "Luxury",
-    type: "Penthouse",
-    featured: true,
-  },
-  {
-    id: 5,
     title: "Contemporary Villa in Goa",
     price: "₹1,80,00,000",
     beds: 3,
@@ -70,7 +56,7 @@ export const featuredProperties = [
     featured: true,
   },
   {
-    id: 6,
+    id: 5,
     title: "Smart Home in Hyderabad",
     price: "₹85,00,000",
     beds: 3,
@@ -82,5 +68,22 @@ export const featuredProperties = [
     badge: "Smart",
     type: "Apartment",
     featured: true,
+  },
+
+  //PROPERTY LANDS
+    {
+    id: 6,
+    title: "Agriculture Land",
+    price: "₹48,00,000",
+    landArea: "3 Acres",
+    facing: "East Facing",
+    approval: "Patta Land",
+    location: "Pollachi, Coimbatore",
+    image:
+      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=500&h=400&fit=crop",
+    badge: "Land",
+    type: "Agriculture",
+    featured: true,
+    isLand: true,
   },
 ];

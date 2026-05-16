@@ -2,6 +2,8 @@ import {
   FiMapPin,
   FiMaximize2,
   FiArrowRight,
+  FiCompass,
+  FiCheckCircle,
 } from "react-icons/fi";
 
 import { FaBed, FaBath } from "react-icons/fa";
@@ -70,21 +72,42 @@ const FeaturedProperties = () => {
                 </div>
 
                 <div className="property-features">
-                  <div className="feature-item">
-                    <FaBed />
-                    <span>{property.beds} Beds</span>
-                  </div>
+                    {property.isLand ? (
+                      <>
+                        <div className="feature-item">
+                          <FiCheckCircle />
+                          <span>{property.approval}</span>
+                        </div>
+                        
+                        <div className="feature-item">
+                          <FiCompass />
+                          <span>{property.facing}</span>
+                        </div>
 
-                  <div className="feature-item">
-                    <FaBath />
-                    <span>{property.baths} Baths</span>
-                  </div>
+                        <div className="feature-item">
+                          <FiMaximize2 />
+                          <span>{property.landArea}</span>
+                        </div>
+                      </>
+                    ) : (
+                      <>
+                        <div className="feature-item">
+                          <FaBed />
+                          <span>{property.beds} Beds</span>
+                        </div>
 
-                  <div className="feature-item">
-                    <FiMaximize2 />
-                    <span>{property.sqft} sqft</span>
+                        <div className="feature-item">
+                          <FaBath />
+                          <span>{property.baths} Baths</span>
+                        </div>
+
+                        <div className="feature-item">
+                          <FiMaximize2 />
+                          <span>{property.sqft} sqft</span>
+                        </div>
+                      </>
+                    )}
                   </div>
-                </div>
 
                 <button className="property-button">
                   Explore Property

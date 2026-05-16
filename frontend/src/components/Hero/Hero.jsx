@@ -32,10 +32,10 @@ const Hero = () => {
               alt="Featured luxury property"
               className="featured-property-image"
             />
-            <div className="property-info-overlay">
-              <div className="property-price">₹2,50,00,000</div>
-              <div className="property-type">Luxury Villa</div>
-              <div className="property-location">
+            <div className="hero-property-info-overlay">
+                <div className="hero-property-price">₹2,50,00,000</div>
+                <div className="hero-property-type">Luxury Villa</div>
+                <div className="hero-property-location">
                 <FiMapPin size={16} />
                 Salem, Tamil Nadu
               </div>
