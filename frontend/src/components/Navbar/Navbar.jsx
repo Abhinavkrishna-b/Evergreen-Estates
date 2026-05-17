@@ -31,22 +31,22 @@ const Navbar = () => {
           {isOpen ? <FiX size={24} /> : <FiMenu size={24} />}
         </div>
 
-        {/* Navigation Links & Mobile CTA */}
+        {/* Navigation Links & Mobile Auth Buttons */}
         <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
           <li><a href="#home" className="nav-link" onClick={toggleMenu}>Home</a></li>
           <li><a href="#properties" className="nav-link" onClick={toggleMenu}>Properties</a></li>
           <li><a href="#about" className="nav-link" onClick={toggleMenu}>About</a></li>
           <li><a href="#contact" className="nav-link" onClick={toggleMenu}>Contact</a></li>
           
-          {/* This button ONLY shows inside the mobile dropdown */}
-          <li className="mobile-only">
-            <button className="cta-button">Get Started</button>
+          <li className="mobile-only auth-buttons-mobile">
+            <button className="btn-secondary" onClick={toggleMenu}>Login</button>
+            <button className="cta-button" onClick={toggleMenu}>Sign Up</button>
           </li>
         </ul>
 
-        {/* Desktop CTA Button (Hides on mobile) */}
-        <div className="desktop-only">
-          <button className="cta-button">Get Started</button>
+        <div className="desktop-only auth-buttons">
+          <button className="btn-secondary">Login</button>
+          <button className="cta-button">Sign Up</button>
         </div>
 
       </div>
