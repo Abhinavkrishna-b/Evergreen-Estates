@@ -178,7 +178,8 @@
   }
 
   /* Hide the top-bar button wrapper on mobile */
-  .desktop-only {
+.desktop-only,
+  .desktop-only.auth-buttons {
     display: none; 
   }
 
