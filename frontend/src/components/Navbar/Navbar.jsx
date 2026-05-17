@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
 import './Navbar.css';
 
@@ -33,8 +34,21 @@ const Navbar = () => {
 
         {/* Navigation Links & Mobile Auth Buttons */}
         <ul className={`nav-links ${isOpen ? 'active' : ''}`}>
-          <li><a href="#home" className="nav-link" onClick={toggleMenu}>Home</a></li>
-          <li><a href="#properties" className="nav-link" onClick={toggleMenu}>Properties</a></li>
+          <li>
+            <Link to="/" 
+              className="nav-link" 
+              onClick={toggleMenu}>
+              Home
+            </Link>
+          </li>
+
+          <li>
+            <Link to="/properties"
+              className="nav-link"
+              onClick={toggleMenu}>
+              Properties
+            </Link>
+          </li>
           <li><a href="#about" className="nav-link" onClick={toggleMenu}>About</a></li>
           <li><a href="#contact" className="nav-link" onClick={toggleMenu}>Contact</a></li>
           

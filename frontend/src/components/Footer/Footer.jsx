@@ -60,7 +60,7 @@ const Footer = () => {
         {/* Bottom */}
         <div className="footer-bottom">
           <p>
-            © 2025 Evergreen Estates. All rights reserved.
+            © 2026 Evergreen Estates. All rights reserved.
           </p>
 
           <div className="footer-bottom-links">
