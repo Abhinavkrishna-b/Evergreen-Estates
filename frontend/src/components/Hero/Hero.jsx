@@ -76,7 +76,7 @@ const Hero = () => {
               <div className="search-field">
                 <label className="search-label">
                   <FiFilter className="search-icon" />
-                  <span>Type</span>
+                  <span>Property Type</span>
                 </label>
                 <select
                   value={filters.propertyType}
