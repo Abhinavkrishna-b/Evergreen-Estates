@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Navbar from '../../components/Navbar/Navbar';
+import Footer from '../../components/Footer/Footer';
 import FilterBar from '../../components/FilterBar/FilterBar';
 import HorizontalCard from '../../components/HorizontalCard/HorizontalCard';
 import { featuredProperties } from '../../constants/properties';
@@ -94,6 +95,9 @@ const PropertiesPage = () => {
         </div>
 
       </div>
+
+      <Footer/>
+
     </div>
   );
 };
