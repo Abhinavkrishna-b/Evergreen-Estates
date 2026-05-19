@@ -1,0 +1,150 @@
+.horizontal-card {
+  display: flex;
+  background: white;
+  border-radius: 16px;
+  border: 1px solid #e8ecf1;
+  overflow: hidden;
+  height: 220px;
+  transition: all 0.3s ease;
+  margin-bottom: 20px;
+}
+
+.horizontal-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(0, 70, 67, 0.08);
+  border-color: rgba(0, 70, 67, 0.2);
+}
+
+.h-card-image-wrapper {
+  position: relative;
+  width: 280px;
+  min-width: 280px;
+  overflow: hidden;
+}
+
+.h-card-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.horizontal-card:hover .h-card-image {
+  transform: scale(1.05);
+}
+
+.h-card-badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  background: white;
+  color: #004643;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.h-card-content {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+}
+
+.h-card-type {
+  display: inline-block;
+  color: #036b64;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+
+.h-card-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin: 0 0 8px 0;
+}
+
+.h-card-location {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #666b7a;
+  font-size: 0.9rem;
+}
+
+.h-card-price {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #004643;
+}
+
+.h-card-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  border-top: 1px solid #f0f2f5;
+  padding-top: 16px;
+}
+
+.h-card-features {
+  display: flex;
+  gap: 16px;
+}
+
+.h-feature-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.85rem;
+  color: #4b5563;
+  font-weight: 600;
+}
+
+.h-feature-item svg {
+  color: #004643;
+}
+
+.h-card-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.icon-btn {
+  background: white;
+  border: 1px solid #e8ecf1;
+  color: #666b7a;
+  width: 36px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.icon-btn:hover {
+  color: #004643;
+  border-color: #004643;
+  background: #f8fafb;
+}
+
+@media (max-width: 1100px) {
+  .horizontal-card {
+    flex-direction: column;
+    height: auto;
+  }
+  .h-card-image-wrapper {
+    width: 100%;
+    height: 240px;
+  }
+  .h-card-bottom {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+}

@@ -49,6 +49,14 @@
   min-height: 400px;
 }
 
+.properties-scroll-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 8px;
+  padding-bottom: 32px;
+}
+
 .map-placeholder-bg {
   width: 100%;
   height: 100%;
