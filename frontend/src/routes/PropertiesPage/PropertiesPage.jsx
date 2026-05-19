@@ -3,6 +3,7 @@ import Navbar from '../../components/Navbar/Navbar';
 import FilterBar from '../../components/FilterBar/FilterBar';
 import HorizontalCard from '../../components/HorizontalCard/HorizontalCard';
 import { featuredProperties } from '../../constants/properties';
+import Map from '../../components/Map/Map'
 import './PropertiesPage.css';
 
 const PropertiesPage = () => {
@@ -89,9 +90,7 @@ const PropertiesPage = () => {
         </div>
 
         <div className="properties-map-container">
-           <div className="map-placeholder-bg">
-              <p>Map View Area</p>
-           </div>
+          <Map properties={filteredResults} />
         </div>
 
       </div>
