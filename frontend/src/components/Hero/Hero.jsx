@@ -1,8 +1,11 @@
 import { useState } from 'react';
-import { FiMapPin, FiFilter, FiSearch, FiStar,   FiTrendingUp} from 'react-icons/fi';
+import { useNavigate, createSearchParams } from 'react-router-dom';
+import { FiMapPin, FiFilter, FiSearch, FiStar, FiTrendingUp } from 'react-icons/fi';
 import './Hero.css';
 
 const Hero = () => {
+  const navigate = useNavigate();
+  
   const [filters, setFilters] = useState({
     location: '',
     propertyType: 'All',
@@ -18,13 +21,29 @@ const Hero = () => {
 
   const handleSearch = () => {
     console.log('Searching with filters:', filters);
-    // TODO: Navigate to search results
+    
+    const params = {};
+    
+    if (filters.location) {
+      params.location = filters.location;
+    }
+    if (filters.propertyType !== 'All') {
+      params.property = filters.propertyType.toLowerCase(); 
+    }
+    if (filters.priceRange !== 'All') {
+      params.priceRange = filters.priceRange;
+    }
+
+    navigate({
+      pathname: '/properties',
+      search: `?${createSearchParams(params)}`,
+    });
   };
 
   return (
     <section className="hero" id="home">
       <div className="hero-content">
-        {/* Left Side - Featured Property Image */}
+
         <div className="hero-left hero-left-enter">
           <div className="featured-property-container">
             <img
@@ -43,7 +62,6 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Right Side - Search & Title */}
         <div className="hero-right hero-right-enter">
           <div className="hero-text">
             <h1 className="hero-title">
@@ -54,10 +72,8 @@ const Hero = () => {
             </p>
           </div>
 
-          {/* Search Bar */}
           <div className="search-container">
             <div className="search-box">
-              {/* Location Input */}
               <div className="search-field">
                 <label className="search-label">
                   <FiMapPin className="search-icon" />
@@ -72,7 +88,6 @@ const Hero = () => {
                 />
               </div>
 
-              {/* Property Type */}
               <div className="search-field">
                 <label className="search-label">
                   <FiFilter className="search-icon" />
@@ -92,7 +107,6 @@ const Hero = () => {
                 </select>
               </div>
 
-              {/* Price Range */}
               <div className="search-field">
                 <label className="search-label">
                   <>
@@ -113,7 +127,6 @@ const Hero = () => {
                 </select>
               </div>
 
-              {/* Search Button */}
               <button className="search-button" onClick={handleSearch}>
                 <FiSearch size={20} />
                 <span>Search</span>
@@ -121,14 +134,12 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Secondary CTA */}
           <div className="hero-secondary-cta">
             <a href="#properties" className="browse-link">Browse all properties →</a>
           </div>
         </div>
       </div>
 
-      {/* Scroll Indicator */}
       <div className="scroll-indicator">
         <span>Scroll to explore</span>
         <div className="scroll-arrow">↓</div>

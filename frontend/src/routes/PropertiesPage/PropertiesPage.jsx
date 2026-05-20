@@ -1,19 +1,30 @@
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
 import Footer from '../../components/Footer/Footer';
 import FilterBar from '../../components/FilterBar/FilterBar';
 import HorizontalCard from '../../components/HorizontalCard/HorizontalCard';
+import Map from '../../components/Map/Map';
 import { featuredProperties } from '../../constants/properties';
-import Map from '../../components/Map/Map'
+import { parsePriceRange } from '../../utils/searchUtils';
 import './PropertiesPage.css';
 
 const PropertiesPage = () => {
+  // Read URL parameters
+  const [searchParams] = useSearchParams();
+  
+  const urlLocation = searchParams.get('location') || '';
+  const urlPropertyType = searchParams.get('property') || 'any';
+  const urlPriceRange = searchParams.get('priceRange') || '';
+  
+  const { minPrice: initialMin, maxPrice: initialMax } = parsePriceRange(urlPriceRange);
+
   const [filters, setFilters] = useState({
-    location: 'Salem',
+    location: urlLocation,
     type: 'any',
-    property: 'any',
-    minPrice: '',
-    maxPrice: '',
+    property: urlPropertyType,
+    minPrice: initialMin,
+    maxPrice: initialMax,
     bedroom: ''
   });
 
@@ -22,7 +33,7 @@ const PropertiesPage = () => {
   useEffect(() => {
     handleSearch();
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, []); 
 
   const handleFilterChange = (key, value) => {
     setFilters(prev => ({ ...prev, [key]: value }));
@@ -33,20 +44,15 @@ const PropertiesPage = () => {
       
       const matchLoc = !filters.location || property.location.toLowerCase().includes(filters.location.toLowerCase());
       
-      
       const matchPurpose = !filters.type || filters.type === 'any' || property.purpose === filters.type;
-      
       
       const matchProp = !filters.property || filters.property === 'any' || property.propertyType === filters.property;
       
-      
       const min = parseInt(filters.minPrice);
       const matchMinPrice = isNaN(min) || property.rawPrice >= min;
-
       
       const max = parseInt(filters.maxPrice);
       const matchMaxPrice = isNaN(max) || property.rawPrice <= max;
-
       
       const beds = parseInt(filters.bedroom);
       const matchBed = isNaN(beds) || (property.beds && property.beds >= beds);
