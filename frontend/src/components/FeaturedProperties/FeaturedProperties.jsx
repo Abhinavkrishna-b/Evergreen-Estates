@@ -5,6 +5,7 @@ import {
   FiCompass,
   FiCheckCircle,
 } from "react-icons/fi";
+import { Link } from "react-router-dom";
 
 import { FaBed, FaBath } from "react-icons/fa";
 
@@ -30,10 +31,10 @@ const FeaturedProperties = () => {
             </p>
           </div>
 
-          <button className="featured-view-btn">
+          <Link to="/properties" className="featured-view-btn">
             View All Properties
             <FiArrowRight />
-          </button>
+          </Link>
         </div>
 
         <div className="properties-grid">

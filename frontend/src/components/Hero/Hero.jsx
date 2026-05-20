@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useNavigate, createSearchParams } from 'react-router-dom';
+import { useNavigate, createSearchParams , Link} from 'react-router-dom';
 import { FiMapPin, FiFilter, FiSearch, FiStar, FiTrendingUp } from 'react-icons/fi';
 import './Hero.css';
 
@@ -135,7 +135,7 @@ const Hero = () => {
           </div>
 
           <div className="hero-secondary-cta">
-            <a href="#properties" className="browse-link">Browse all properties →</a>
+            <Link to="/properties" className="browse-link">Browse all properties →</Link>
           </div>
         </div>
       </div>
