@@ -5,6 +5,7 @@ import ImageGallery from '../../components/ImageGallery/ImageGallery';
 import PropertyHeader from '../../components/PropertyHeader/PropertyHeader';
 import PropertyDescription from '../../components/PropertyDescription/PropertyDescription';
 import PropertySpecs from '../../components/PropertySpecs/PropertySpecs';
+import Map from '../../components/Map/Map'
 import './PropertyDetails.css'; 
 
 const PropertyDetails = () => {
@@ -32,7 +33,12 @@ const PropertyDetails = () => {
         {/* RIGHT COLUMN - SIDEBAR */}
         <div className="details-right">
           <PropertySpecs property={property} />
-          <div className="placeholder-box">Map Component Will Go Here</div>
+
+          <div className="sidebar-map-wrapper">
+            {/* Notice we wrap the single property in an array [ ] */}
+            <Map properties={[property]} />
+        </div>
+        
           <div className="placeholder-box">Action Buttons Will Go Here</div>
         </div>
 
