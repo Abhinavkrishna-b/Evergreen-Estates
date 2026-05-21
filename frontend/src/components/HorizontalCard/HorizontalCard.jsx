@@ -1,4 +1,4 @@
-import { FiMapPin, FiMaximize2, FiCompass, FiCheckCircle, FiBookmark, FiMessageCircle } from 'react-icons/fi';
+import { FiMapPin, FiMaximize2, FiCompass, FiCheckCircle, FiBookmark, FiMessageSquare } from 'react-icons/fi';
 import { FaBed, FaBath } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import './HorizontalCard.css';
@@ -76,8 +76,8 @@ const HorizontalCard = ({ property }) => {
           </div>
 
           <div className="h-card-actions">
+            <button className="icon-btn"><FiMessageSquare /></button>
             <button className="icon-btn"><FiBookmark /></button>
-            <button className="icon-btn"><FiMessageCircle /></button>
           </div>
         </div>
 
