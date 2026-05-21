@@ -4,6 +4,7 @@ import { featuredProperties } from '../../constants/properties';
 import ImageGallery from '../../components/ImageGallery/ImageGallery';
 import PropertyHeader from '../../components/PropertyHeader/PropertyHeader';
 import PropertyDescription from '../../components/PropertyDescription/PropertyDescription';
+import PropertySpecs from '../../components/PropertySpecs/PropertySpecs';
 import './PropertyDetails.css'; 
 
 const PropertyDetails = () => {
@@ -30,7 +31,7 @@ const PropertyDetails = () => {
 
         {/* RIGHT COLUMN - SIDEBAR */}
         <div className="details-right">
-          <div className="placeholder-box">Property Specs (isLand logic) Will Go Here</div>
+          <PropertySpecs property={property} />
           <div className="placeholder-box">Map Component Will Go Here</div>
           <div className="placeholder-box">Action Buttons Will Go Here</div>
         </div>

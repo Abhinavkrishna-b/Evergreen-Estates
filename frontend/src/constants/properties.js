@@ -200,7 +200,7 @@ export const featuredProperties = [
     images: [
       "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=600&fit=crop",
       "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&fit=crop",
-      "https://images.unsplash.com/photo-1592982537447-6f2a6a0c5c13?w=800&fit=crop",
+      "https://images.unsplash.com/photo-1609126917056-243a15e2e789?q=80&w=1169&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
       "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=800&fit=crop"
     ],
     description: "Nestled in the heart of the vibrant city center, this charming property offers a perfect blend of contemporary living and urban convenience. As you step through the entrance, you are greeted by an inviting living space adorned with modern furnishings and ample natural light streaming through large windows.\n\nSchedule a viewing today and discover the unparalleled charm and convenience of urban living at its finest.",
