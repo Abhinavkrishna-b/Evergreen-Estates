@@ -1,0 +1,12 @@
+.property-description-container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  color: #4b5563;
+  line-height: 1.8;
+  font-size: 1.05rem;
+}
+
+.description-paragraph {
+  margin: 0;
+}

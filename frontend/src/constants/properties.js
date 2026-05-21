@@ -27,7 +27,12 @@ export const featuredProperties = [
       "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&fit=crop",
       "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&fit=crop",
       "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&fit=crop"
-    ]
+    ],
+    description: "Nestled in the heart of the vibrant city center, this charming property offers a perfect blend of contemporary living and urban convenience. As you step through the entrance, you are greeted by an inviting living space adorned with modern furnishings and ample natural light streaming through large windows.\n\nSchedule a viewing today and discover the unparalleled charm and convenience of urban living at its finest.",
+    agent: {
+      name: "Kevin Walker",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop"
+    }
   },
   {
     id: 2,
@@ -57,7 +62,12 @@ export const featuredProperties = [
       "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&fit=crop",
       "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&fit=crop",
       "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&fit=crop"
-    ]
+    ],
+    description: "Nestled in the heart of the vibrant city center, this charming property offers a perfect blend of contemporary living and urban convenience. As you step through the entrance, you are greeted by an inviting living space adorned with modern furnishings and ample natural light streaming through large windows.\n\nSchedule a viewing today and discover the unparalleled charm and convenience of urban living at its finest.",
+    agent: {
+      name: "Kevin Walker",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop"
+    }
   },
   {
     id: 3,
@@ -87,7 +97,12 @@ export const featuredProperties = [
       "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&fit=crop",
       "https://images.unsplash.com/photo-1600607686527-6fb886090705?w=800&fit=crop",
       "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&fit=crop"
-    ]
+    ],
+    description: "Nestled in the heart of the vibrant city center, this charming property offers a perfect blend of contemporary living and urban convenience. As you step through the entrance, you are greeted by an inviting living space adorned with modern furnishings and ample natural light streaming through large windows.\n\nSchedule a viewing today and discover the unparalleled charm and convenience of urban living at its finest.",
+    agent: {
+      name: "Kevin Walker",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop"
+    }
   },
   {
     id: 4,
@@ -117,7 +132,12 @@ export const featuredProperties = [
       "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&fit=crop",
       "https://images.unsplash.com/photo-1501183638710-841dd1904471?w=800&fit=crop",
       "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=800&fit=crop"
-    ]
+    ],
+    description: "Nestled in the heart of the vibrant city center, this charming property offers a perfect blend of contemporary living and urban convenience. As you step through the entrance, you are greeted by an inviting living space adorned with modern furnishings and ample natural light streaming through large windows.\n\nSchedule a viewing today and discover the unparalleled charm and convenience of urban living at its finest.",
+    agent: {
+      name: "Kevin Walker",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop"
+    }
   },
   {
     id: 5,
@@ -147,7 +167,12 @@ export const featuredProperties = [
       "https://images.unsplash.com/photo-1558036117-15d82a90b9b1?w=800&fit=crop",
       "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=800&fit=crop",
       "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&fit=crop"
-    ]
+    ],
+    description: "Nestled in the heart of the vibrant city center, this charming property offers a perfect blend of contemporary living and urban convenience. As you step through the entrance, you are greeted by an inviting living space adorned with modern furnishings and ample natural light streaming through large windows.\n\nSchedule a viewing today and discover the unparalleled charm and convenience of urban living at its finest.",
+    agent: {
+      name: "Kevin Walker",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop"
+    }
   },
   {
     id: 6,
@@ -177,6 +202,11 @@ export const featuredProperties = [
       "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&fit=crop",
       "https://images.unsplash.com/photo-1592982537447-6f2a6a0c5c13?w=800&fit=crop",
       "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=800&fit=crop"
-    ]
+    ],
+    description: "Nestled in the heart of the vibrant city center, this charming property offers a perfect blend of contemporary living and urban convenience. As you step through the entrance, you are greeted by an inviting living space adorned with modern furnishings and ample natural light streaming through large windows.\n\nSchedule a viewing today and discover the unparalleled charm and convenience of urban living at its finest.",
+    agent: {
+      name: "Kevin Walker",
+      image: "https://images.unsplash.com/photo-1560250097-0b93528c311a?w=150&h=150&fit=crop"
+    }
   },
 ];

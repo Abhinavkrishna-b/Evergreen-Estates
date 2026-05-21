@@ -1,0 +1,81 @@
+.property-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  width: 100%;
+}
+
+.header-info {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.property-title {
+  font-size: clamp(1.8rem, 3vw, 2.4rem);
+  font-weight: 700;
+  color: #1a1a2e;
+  line-height: 1.2;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.property-location {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #666b7a;
+  font-size: 1rem;
+}
+
+.property-location svg {
+  color: #004643;
+}
+
+.property-price-badge {
+  display: inline-block;
+  background-color: rgba(0, 70, 67, 0.08);
+  color: #004643;
+  font-weight: 700;
+  font-size: 1.2rem;
+  padding: 8px 16px;
+  border-radius: 6px;
+  width: fit-content;
+  margin-top: 4px;
+}
+
+.agent-card {
+  background-color: #fbf8f1; 
+  padding: 16px 24px;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  min-width: 140px;
+}
+
+.agent-avatar {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.agent-name {
+  font-weight: 700;
+  color: #1a1a2e;
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .property-header-container {
+    flex-direction: column;
+  }
+  .agent-card {
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+  }
+}

@@ -2,6 +2,8 @@ import { useParams, Navigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
 import { featuredProperties } from '../../constants/properties';
 import ImageGallery from '../../components/ImageGallery/ImageGallery';
+import PropertyHeader from '../../components/PropertyHeader/PropertyHeader';
+import PropertyDescription from '../../components/PropertyDescription/PropertyDescription';
 import './PropertyDetails.css'; 
 
 const PropertyDetails = () => {
@@ -22,8 +24,8 @@ const PropertyDetails = () => {
         {/* LEFT COLUMN - MAIN CONTENT */}
         <div className="details-left">
             <ImageGallery images={property.images} />
-            <div className="placeholder-box">Header & Agent Component Will Go Here</div>
-            <div className="placeholder-box">Description Component Will Go Here</div>
+            <PropertyHeader property={property} />
+            <PropertyDescription text={property.description} />
         </div>
 
         {/* RIGHT COLUMN - SIDEBAR */}
