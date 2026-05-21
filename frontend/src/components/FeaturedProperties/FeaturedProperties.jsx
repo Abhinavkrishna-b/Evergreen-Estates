@@ -5,7 +5,7 @@ import {
   FiCompass,
   FiCheckCircle,
 } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 import { FaBed, FaBath } from "react-icons/fa";
 
@@ -13,6 +13,9 @@ import { featuredProperties } from "../../constants/properties";
 import "./FeaturedProperties.css";
 
 const FeaturedProperties = () => {
+
+  const navigate = useNavigate();
+
   return (
     <section className="featured-properties section" id="properties">
       <div className="container">
@@ -39,7 +42,14 @@ const FeaturedProperties = () => {
 
         <div className="properties-grid">
           {featuredProperties.map((property) => (
-            <article className="property-card" key={property.id}>
+            
+            <article 
+              className="property-card" 
+              key={property.id}
+              onClick={() => navigate(`/properties/${property.id}`)}
+              style={{ cursor: 'pointer' }}
+            >
+
               <div className="property-image-wrapper">
                 <img
                   src={property.image}

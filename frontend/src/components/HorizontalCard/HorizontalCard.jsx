@@ -1,10 +1,18 @@
 import { FiMapPin, FiMaximize2, FiCompass, FiCheckCircle, FiBookmark, FiMessageCircle } from 'react-icons/fi';
 import { FaBed, FaBath } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 import './HorizontalCard.css';
 
 const HorizontalCard = ({ property }) => {
+
+  const navigate = useNavigate();
+
   return (
-    <article className="horizontal-card">
+    <article 
+      className="horizontal-card"
+      onClick={() => navigate(`/properties/${property.id}`)}
+      style={{ cursor: 'pointer' }}
+    >
       
       <div className="h-card-image-wrapper">
         <img 
