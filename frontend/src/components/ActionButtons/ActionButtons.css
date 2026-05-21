@@ -1,0 +1,47 @@
+.action-buttons-container {
+  display: flex;
+  gap: 16px;
+  width: 100%;
+  margin-top: 8px; /* Gives a tiny bit of breathing room below the map */
+}
+
+.action-btn {
+  flex: 1; /* Makes both buttons take up exactly half the width */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 14px 16px;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-icon {
+  font-size: 1.1rem;
+}
+
+/* Outline Style */
+.outline-btn {
+  background-color: transparent;
+  color: #004643;
+  border: 1px solid rgba(0, 70, 67, 0.3); /* Soft green border */
+}
+
+/* Hover Effect: Inverts to solid green */
+.outline-btn:hover {
+  background-color: #004643;
+  color: #ffffff;
+  border-color: #004643;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 70, 67, 0.15);
+}
+
+/* Mobile Responsiveness: Stack buttons on small screens */
+@media (max-width: 480px) {
+  .action-buttons-container {
+    flex-direction: column;
+  }
+}
