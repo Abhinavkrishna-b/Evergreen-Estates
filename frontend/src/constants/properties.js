@@ -16,13 +16,18 @@ export const featuredProperties = [
     featured: true,
     latitude: 19.0596,
     longitude: 72.8295,
-    // New Details
     configuration: "4 BHK Ultra-Luxury",
     facing: "West Facing",
     isLand: false,
     parking: "2 Covered Car Parks",
     furnishing: "Fully Furnished",
     policies: "Pet Friendly, 24/7 Security",
+    images: [
+      "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&h=600&fit=crop", 
+      "https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&fit=crop",
+      "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=800&fit=crop",
+      "https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=800&fit=crop"
+    ]
   },
   {
     id: 2,
@@ -41,13 +46,18 @@ export const featuredProperties = [
     featured: true,
     latitude: 12.9352,
     longitude: 77.6245,
-    // New Details
     configuration: "3 BHK Premium Flat",
     facing: "East Facing",
     isLand: false,
     parking: "1 Semi-Covered Car Park",
     furnishing: "Semi-Furnished",
     policies: "Standard Association Guidelines Apply",
+    images: [
+      "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=800&fit=crop",
+      "https://images.unsplash.com/photo-1484154218962-a197022b5858?w=800&fit=crop",
+      "https://images.unsplash.com/photo-1513694203232-719a280e022f?w=800&fit=crop"
+    ]
   },
   {
     id: 3,
@@ -66,13 +76,18 @@ export const featuredProperties = [
     featured: true,
     latitude: 28.5921,
     longitude: 77.0460,
-    // New Details
     configuration: "5 BHK Independent Duplex",
     facing: "North-East Facing",
     isLand: false,
     parking: "Open Space for 3 Vehicles",
     furnishing: "Unfurnished",
     policies: "11-Month Lease, 2 Months Security Deposit",
+    images: [
+      "https://images.unsplash.com/photo-1564013799919-ab600027ffc6?w=800&h=600&fit=crop", 
+      "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?w=800&fit=crop",
+      "https://images.unsplash.com/photo-1600607686527-6fb886090705?w=800&fit=crop",
+      "https://images.unsplash.com/photo-1584622650111-993a426fbf0a?w=800&fit=crop"
+    ]
   },
   {
     id: 4,
@@ -91,13 +106,18 @@ export const featuredProperties = [
     featured: true,
     latitude: 15.5494,
     longitude: 73.7626,
-    // New Details
     configuration: "3 BHK Luxury Holiday Home",
     facing: "North Facing",
     isLand: false,
     parking: "Dedicated Private Garage",
     furnishing: "Fully Furnished",
     policies: "Gated Community",
+    images: [
+      "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?w=800&fit=crop",
+      "https://images.unsplash.com/photo-1501183638710-841dd1904471?w=800&fit=crop",
+      "https://images.unsplash.com/photo-1574362848149-11496d93a7c7?w=800&fit=crop"
+    ]
   },
   {
     id: 5,
@@ -116,13 +136,18 @@ export const featuredProperties = [
     featured: true,
     latitude: 17.4435,
     longitude: 78.3772,
-    // New Details
     configuration: "3 BHK Smart Apartment",
     facing: "South Facing",
     isLand: false,
     parking: "1 Basement Parking Slot",
     furnishing: "Semi-Furnished",
     policies: "Corporate Leasing Welcomed",
+    images: [
+      "https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1558036117-15d82a90b9b1?w=800&fit=crop",
+      "https://images.unsplash.com/photo-1583847268964-b28dc8f51f92?w=800&fit=crop",
+      "https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=800&fit=crop"
+    ]
   },
   {
     id: 6,
@@ -142,11 +167,16 @@ export const featuredProperties = [
     isLand: true,
     latitude: 11.6643,
     longitude: 78.1460,
-    // New Details for Land
     configuration: "Farm Land",
     soilType: "Red Loam",
     waterSource: "Free Agriculture Well and Borewell",
     electricity: "3-Phase Power Connection",
     approvalStatus: "Single-Owner Patta",
+    images: [
+      "https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=800&h=600&fit=crop",
+      "https://images.unsplash.com/photo-1625246333195-78d9c38ad449?w=800&fit=crop",
+      "https://images.unsplash.com/photo-1592982537447-6f2a6a0c5c13?w=800&fit=crop",
+      "https://images.unsplash.com/photo-1605000797499-95a51c5269ae?w=800&fit=crop"
+    ]
   },
 ];
