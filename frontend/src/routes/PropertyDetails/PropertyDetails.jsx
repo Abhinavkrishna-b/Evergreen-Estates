@@ -7,6 +7,7 @@ import PropertyDescription from '../../components/PropertyDescription/PropertyDe
 import PropertySpecs from '../../components/PropertySpecs/PropertySpecs';
 import Map from '../../components/Map/Map'
 import ActionButtons from '../../components/ActionButtons/ActionButtons';
+import Footer from '../../components/Footer/Footer';
 import './PropertyDetails.css'; 
 
 const PropertyDetails = () => {
@@ -43,6 +44,8 @@ const PropertyDetails = () => {
         </div>
 
       </div>
+
+      <Footer/>
     </div>
   );
 };
