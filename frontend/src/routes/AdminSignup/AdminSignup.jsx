@@ -131,7 +131,7 @@ const AdminSignup = () => {
         </form>
 
         <div className="admin-footer">
-          <p>Already have an account? <Link to="/login" className="login-link">Login</Link></p>
+          <p>Already have an account? <Link to="/admin-login" className="login-link">Login</Link></p>
         </div>
 
       </div>
