@@ -1,0 +1,142 @@
+.signup-layout {
+  height: 100vh;
+  overflow: hidden; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(0, 70, 67, 0.05) 0%, rgba(3, 107, 100, 0.1) 100%);
+  padding: 20px;
+}
+
+.signup-card {
+  background: white;
+  width: 100%;
+  max-width: 440px; 
+  border-radius: 20px;
+  padding: 36px 40px; 
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.08), 0 0 1px rgba(0, 0, 0, 0.06);
+  border: 1px solid rgba(0, 70, 67, 0.08);
+  animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.signup-header {
+  margin-bottom: 24px;
+}
+
+.signup-header h1 {
+  font-size: clamp(1.8rem, 3vw, 2.2rem);
+  font-weight: 800;
+  color: #1a1a2e;
+  line-height: 1.1;
+  margin-bottom: 6px;
+  letter-spacing: -1px;
+}
+
+.signup-header p {
+  color: #666b7a;
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+.highlight-text {
+  color: #004643;
+  font-weight: 600;
+}
+
+.role-section {
+  margin-bottom: 20px;
+}
+
+.role-label {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 10px;
+}
+
+.role-cards-container {
+  display: flex;
+  gap: 12px;
+}
+
+.form-fields-container {
+  margin-bottom: 24px;
+}
+
+.submit-cta-button {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #004643 0%, #036b64 100%);
+  color: white;
+  padding: 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  font-size: 0.95rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 70, 67, 0.2);
+}
+
+.submit-cta-button:hover {
+  background: linear-gradient(135deg, #036b64 0%, #004643 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 70, 67, 0.28);
+}
+
+.submit-cta-button:active {
+  transform: translateY(0);
+}
+
+.cta-arrow {
+  transition: transform 0.3s ease;
+}
+
+.submit-cta-button:hover .cta-arrow {
+  transform: translateX(4px);
+}
+
+.signup-footer {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #666b7a;
+}
+
+.login-link {
+  color: #004643;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.login-link:hover {
+  color: #036b64;
+  text-decoration: underline;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 480px) {
+  .signup-card {
+    padding: 28px 20px;
+    max-height: 95vh;
+    overflow-y: auto; 
+  }
+  
+  .signup-header h1 {
+    font-size: 1.8rem;
+  }
+}

@@ -1,11 +1,10 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { FiMenu, FiX } from 'react-icons/fi';
 import './Navbar.css';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const navigate = useNavigate();
 
   const toggleMenu = () => {
     setIsOpen(!isOpen);
@@ -54,17 +53,26 @@ const Navbar = () => {
           <li><a href="#contact" className="nav-link" onClick={toggleMenu}>Contact</a></li>
           
           <li className="mobile-only auth-buttons-mobile">
-            <button className="btn-secondary" onClick={toggleMenu}>Login</button>
-            <button className="cta-button" onClick={() => {
-              toggleMenu();
-              navigate('/signup');
-            }}>Sign Up</button>
+
+            <Link to="/login" className="btn-secondary">
+              Login
+            </Link>
+            <Link to="/signup" className="cta-button">
+              Sign Up
+            </Link>
+
           </li>
         </ul>
 
         <div className="desktop-only auth-buttons">
-          <button className="btn-secondary">Login</button>
-          <button className="cta-button" onClick={() => navigate('/signup')}>Sign Up</button>
+
+          <Link to="/login" className="btn-secondary">
+            Login
+          </Link>
+          <Link to="/signup" className="cta-button">
+            Sign Up
+          </Link>
+
         </div>
 
       </div>

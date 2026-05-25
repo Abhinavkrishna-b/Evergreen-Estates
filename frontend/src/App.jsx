@@ -4,6 +4,7 @@ import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import Homepage from './routes/Homepage/Homepage';
 import PropertiesPage from './routes/PropertiesPage/PropertiesPage';
 import PropertyDetails from './routes/PropertyDetails/PropertyDetails';
+import SignupPage from './routes/SignupPage/SignupPage';
 
 
 function App() {
@@ -24,6 +25,8 @@ function App() {
             />
 
             <Route path="/properties/:id" element={<PropertyDetails />} />
+
+            <Route path="/signup" element={<SignupPage />} />
           </Routes>
 
         </main>

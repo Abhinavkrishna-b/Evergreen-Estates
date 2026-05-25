@@ -1,0 +1,54 @@
+.role-card {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 18px 16px; 
+  border: 1.5px solid #E5E7EB;
+  border-radius: 12px;
+  cursor: pointer;
+  background: white;
+  transition: all 0.25s ease;
+}
+
+.role-card:hover {
+  border-color: #004643;
+  background: rgba(0, 70, 67, 0.02);
+}
+
+.role-card.selected {
+  border-color: #004643;
+  background: rgba(0, 70, 67, 0.04);
+  box-shadow: 0 4px 12px rgba(0, 70, 67, 0.06);
+}
+
+.role-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 10px;
+  background: #F3F4F6;
+  color: #6B7280;
+  transition: all 0.25s ease;
+}
+
+.role-card.selected .role-icon-wrapper {
+  background: linear-gradient(135deg, #004643 0%, #036b64 100%);
+  color: white;
+}
+
+.role-title {
+  font-weight: 500;
+  color: #4B5563;
+  font-size: 0.9rem;
+  transition: color 0.25s ease;
+}
+
+.role-card.selected .role-title {
+  color: #004643;
+  font-weight: 600;
+}
