@@ -17,7 +17,7 @@ const SignupPage = () => {
   const [errors, setErrors] = useState({});
 
   // Individual Field Rule Checker
-  
+
   const validateField = (name, value) => {
     let errorMsg = '';
 
@@ -172,7 +172,7 @@ const SignupPage = () => {
         </form>
 
         <div className="signup-footer">
-          <p>Already have an account? <Link to="/login" className="login-link">Sign in</Link></p>
+          <p>Already have an account? <Link to="/login" className="login-link">Login</Link></p>
         </div>
 
       </div>

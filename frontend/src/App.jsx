@@ -6,6 +6,7 @@ import PropertiesPage from './routes/PropertiesPage/PropertiesPage';
 import PropertyDetails from './routes/PropertyDetails/PropertyDetails';
 import SignupPage from './routes/SignupPage/SignupPage';
 import AdminSignup from './routes/AdminSignup/AdminSignup';
+import LoginPage from './routes/LoginPage/LoginPage';
 
 
 function App() {
@@ -31,6 +32,8 @@ function App() {
 
             <Route path="/admin-signup" element={<AdminSignup />} />
             {/* Only developers and admins can manually type this url and get admin access */}
+
+            <Route path="/login" element={<LoginPage />} />
           </Routes>
 
         </main>
