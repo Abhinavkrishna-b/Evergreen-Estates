@@ -1,0 +1,136 @@
+.admin-layout {
+  height: 100vh;
+  overflow: hidden; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(0, 70, 67, 0.04) 0%, rgba(3, 107, 100, 0.08) 100%);
+  padding: 24px;
+}
+
+.admin-card {
+  background: white;
+  width: 100%;
+  max-width: 480px;
+  border-radius: 24px;
+  padding: 40px 44px; /* Perfectly optimized vertical balance */
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.06), 0 0 1px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 70, 67, 0.06);
+  animation: adminFadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.admin-header {
+  margin-bottom: 24px;
+}
+
+.admin-header h1 {
+  font-size: clamp(2rem, 4vw, 2.4rem);
+  font-weight: 800;
+  color: #1a1a2e;
+  line-height: 1.1;
+  margin-bottom: 8px;
+  letter-spacing: -0.03em;
+}
+
+.admin-header p {
+  color: #666b7a;
+  font-size: 1rem;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.highlight-text {
+  color: #004643;
+  font-weight: 700;
+}
+
+.form-fields-container {
+  margin-bottom: 24px;
+}
+
+.admin-submit-cta {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #004643 0%, #036b64 100%);
+  color: white;
+  padding: 15px;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 8px 20px rgba(0, 70, 67, 0.15);
+}
+
+.admin-submit-cta:hover {
+  background: linear-gradient(135deg, #036b64 0%, #004643 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 70, 67, 0.25);
+}
+
+.admin-submit-cta:active {
+  transform: translateY(0);
+}
+
+.cta-arrow {
+  transition: transform 0.3s ease;
+}
+
+.admin-submit-cta:hover .cta-arrow {
+  transform: translateX(4px);
+}
+
+.admin-footer {
+  margin-top: 24px;
+  text-align: center;
+  font-size: 0.95rem;
+  color: #666b7a;
+}
+
+.login-link {
+  color: #004643;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.login-link:hover {
+  color: #036b64;
+  text-decoration: underline;
+}
+
+.portal-link {
+  color: #004643;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.portal-link:hover {
+  color: #036b64;
+  text-decoration: underline;
+}
+
+@keyframes adminFadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 600px) {
+  .admin-layout {
+    height: auto;
+    min-height: 100vh;
+    overflow-y: auto;
+    padding: 20px 16px;
+  }
+
+  .admin-card {
+    padding: 36px 24px;
+    border-radius: 20px;
+  }
+}
