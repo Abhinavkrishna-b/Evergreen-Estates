@@ -43,12 +43,11 @@ const FormInput = ({ Icon, type, placeholder, isPassword, name, value, onChange,
             onClick={togglePassword}
             tabIndex="-1"
           >
-            {showPassword ? <FiEyeOff size={16} /> : <FiEye size={16} />}
+            {showPassword ? <FiEye size={16} /> : <FiEyeOff size={16} />}
           </button>
         )}
       </div>
       
-      {/* Real-time Error Messaging */}
       {error && <span className="input-error-text">{error}</span>}
     </div>
   );
