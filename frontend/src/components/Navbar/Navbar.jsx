@@ -49,8 +49,14 @@ const Navbar = () => {
               Properties
             </Link>
           </li>
-          <li><a href="#about" className="nav-link" onClick={toggleMenu}>About</a></li>
-          <li><a href="#contact" className="nav-link" onClick={toggleMenu}>Contact</a></li>
+
+          <li>
+            <Link to="/about" className="nav-link" onClick={toggleMenu}> About </Link>
+          </li>
+
+          <li>
+            <Link to="/contact" className="nav-link" onClick={toggleMenu}> Contact </Link>
+          </li>
           
           <li className="mobile-only auth-buttons-mobile">
 
