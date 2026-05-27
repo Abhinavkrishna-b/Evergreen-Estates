@@ -1,4 +1,5 @@
 import Navbar from '../../components/Navbar/Navbar';
+import UserInfo from '../../components/UserInfo/UserInfo';
 import './UserProfile.css';
 
 const UserProfile = () => {
@@ -9,14 +10,8 @@ const UserProfile = () => {
       <div className="profile-page-layout">
         <div className="profile-container">
           
-          {/* LEFT COLUMN: Main Content Area (flex: 2) */}
           <div className="profile-main-column">
-            
-            {/* 1. User Information Placeholder */}
-            <div className="skeleton-placeholder">
-              <h3>[ User Information Component ]</h3>
-              <p>Avatar, Username, Email, Update Profile & Logout buttons will render here.</p>
-            </div>
+            <UserInfo />
 
             {/* 2. My List (Property Feed) Placeholder */}
             <div className="skeleton-placeholder my-list-placeholder">
