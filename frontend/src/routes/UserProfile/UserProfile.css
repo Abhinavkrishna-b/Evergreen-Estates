@@ -1,0 +1,89 @@
+.profile-page-layout {
+  min-height: calc(100vh - 72px); /* Accounts for Navbar */
+  background-color: #FAFAFA; /* Matches global app background */
+  padding: 40px 24px;
+}
+
+.profile-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px; /* The gap between the left and right columns */
+  animation: fadeUpProfile 0.6s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* --- Structural Columns --- */
+.profile-main-column {
+  flex: 2; /* Takes up 2/3 of the space */
+  display: flex;
+  flex-direction: column;
+  gap: 48px; /* The gap between User Info and My List */
+}
+
+.profile-sidebar-column {
+  flex: 1; /* Takes up 1/3 of the space */
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Skeleton Placeholder Styling --- */
+.skeleton-placeholder {
+  background: rgba(0, 70, 67, 0.02); /* Evergreen subtle teal tint */
+  border: 2px dashed rgba(0, 70, 67, 0.2);
+  border-radius: 16px;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #004643; /* Primary Brand Color */
+  min-height: 250px;
+}
+
+.skeleton-placeholder h3 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  letter-spacing: -0.02em;
+}
+
+.skeleton-placeholder p {
+  color: #666b7a; /* Global secondary text color */
+  font-size: 0.95rem;
+  max-width: 80%;
+  line-height: 1.5;
+}
+
+/* Specific Placeholder Heights */
+.my-list-placeholder {
+  min-height: 400px;
+}
+
+.sidebar-placeholder {
+  min-height: 600px; /* Stretches down the right side */
+  background: rgba(3, 107, 100, 0.02);
+}
+
+@keyframes fadeUpProfile {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Mobile Responsiveness --- */
+@media (max-width: 1024px) {
+  /* On tablets/mobile, stack the sidebar underneath the main content */
+  .profile-container {
+    flex-direction: column;
+  }
+  
+  .sidebar-placeholder {
+    min-height: 300px;
+  }
+}
+
+@media (max-width: 600px) {
+  .profile-page-layout {
+    padding: 24px 16px;
+  }
+}

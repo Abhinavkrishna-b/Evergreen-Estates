@@ -210,3 +210,34 @@ export const featuredProperties = [
     }
   },
 ];
+
+export const mockMessages = [
+  { 
+    id: 1, 
+    name: 'Jane Doe', 
+    text: 'Hi, is the property still available?', 
+    avatar: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop', 
+    unread: true 
+  },
+  { 
+    id: 2, 
+    name: 'Daniel Williams', 
+    text: 'Thank you so much!', 
+    avatar: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop', 
+    unread: false 
+  },
+  { 
+    id: 3, 
+    name: 'Sophia Davis', 
+    text: 'Great news! The paperwork is ready.', 
+    avatar: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop', 
+    unread: false 
+  },
+  { 
+    id: 4, 
+    name: 'David Martinez', 
+    text: 'I\'ll be waiting at the property.', 
+    avatar: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop', 
+    unread: false 
+  },
+];

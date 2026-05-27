@@ -10,6 +10,7 @@ import LoginPage from './routes/LoginPage/LoginPage';
 import AdminLogin from './routes/AdminLogin/AdminLogin';
 import ContactPage from './routes/ContactPage/ContactPage';
 import AboutPage from './routes/AboutPage/AboutPage';
+import UserProfile from './routes/UserProfile/UserProfile';
 
 
 function App() {
@@ -39,6 +40,8 @@ function App() {
             {/* Only developers and admins can manually type this url and get admin access */}
 
             <Route path="/login" element={<LoginPage />} />
+
+            <Route path="/profile" element={<UserProfile />} />
           </Routes>
 
         </main>
