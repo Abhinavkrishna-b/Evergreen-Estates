@@ -22,14 +22,15 @@
   color: #004643;
   border: 1.5px solid #004643;
   padding: 8px 16px;
-  border-radius: 4px;
+  border-radius: 8px;
   font-weight: 600;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s ease;
 }
 
 .update-btn:hover {
   background: rgba(0, 70, 67, 0.05);
+  transform: translateY(-2px)
 }
 
 .info-details {
@@ -63,20 +64,27 @@
 }
 
 .logout-btn {
-  margin-top: 10px;
+  margin-top: 12px;
   width: max-content;
-  background: #004643;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, #004643 0%, #036b64 100%);
   color: white;
-  border: none;
+  border: 1.5px solid transparent;
   padding: 10px 24px;
-  border-radius: 4px;
+  border-radius: 8px; 
   font-weight: 600;
+  font-size: 0.95rem;
   cursor: pointer;
-  transition: background 0.2s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(225, 29, 72, 0.15); 
 }
 
 .logout-btn:hover {
-  background: #036b64;
+  background: linear-gradient(135deg, #036b64 0%, #004643 100%);
+  box-shadow: 0 4px 12px rgba(0, 70, 67, 0.25);
+  transform: translateY(-2px);
 }
 
 @media (max-width: 600px) {
