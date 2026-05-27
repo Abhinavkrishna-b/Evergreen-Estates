@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FiMail, FiLock, FiArrowRight } from 'react-icons/fi';
 import FormInput from '../../components/FormInput/FormInput';
 import './AdminLogin.css';
@@ -11,6 +11,7 @@ const AdminLogin = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const validateField = (name, value) => {
     let errorMsg = '';
@@ -51,6 +52,8 @@ const AdminLogin = () => {
     }
 
     console.log('Admin credentials clear! Processing security verification:', formData);
+    navigate('/admin');
+    //Backend logic
   };
 
   return (

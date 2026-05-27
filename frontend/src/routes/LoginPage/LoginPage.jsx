@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FiMail, FiLock, FiArrowRight } from 'react-icons/fi';
 import FormInput from '../../components/FormInput/FormInput';
 import './LoginPage.css';
@@ -11,6 +11,7 @@ const LoginPage = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const validateField = (name, value) => {
     let errorMsg = '';
@@ -51,6 +52,7 @@ const LoginPage = () => {
     }
 
     console.log('Login credentials clear! Authenticating user payload:', formData);
+    navigate('/');
     // Backend logic will come here
   };
 

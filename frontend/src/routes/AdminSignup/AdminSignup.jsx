@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FiUser, FiMail, FiLock, FiArrowRight } from 'react-icons/fi';
 import FormInput from '../../components/FormInput/FormInput';
 import './AdminSignup.css';
@@ -13,6 +13,7 @@ const AdminSignup = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const validateField = (name, value) => {
     let errorMsg = '';
@@ -67,6 +68,7 @@ const AdminSignup = () => {
     }
 
     console.log('Admin Authentication Clear. Payload:', { ...formData, role: 'admin' });
+    navigate('/admin-login');
   };
 
   return (

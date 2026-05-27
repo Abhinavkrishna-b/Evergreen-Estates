@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import { FiUser, FiMail, FiLock, FiHome, FiBriefcase, FiArrowRight } from 'react-icons/fi';
 import FormInput from '../../components/FormInput/FormInput';
 import RoleCard from '../../components/RoleCard/RoleCard';
@@ -15,6 +15,7 @@ const SignupPage = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   // Individual Field Rule Checker
 
@@ -88,6 +89,7 @@ const SignupPage = () => {
     }
 
     console.log('Validation Passed! Processing Submission Payload:', formData);
+    navigate('/login');
     // Proceed with backend 
   };
 
