@@ -1,0 +1,87 @@
+.messages-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  background: white;
+  border: 1px solid rgba(0, 70, 67, 0.12);
+  border-radius: 16px;
+  padding: 24px;
+  height: fit-content; 
+}
+
+.section-header h2 {
+  font-size: 1.8rem;
+  font-weight: 300; 
+  color: #1a1a2e;
+  margin: 0;
+}
+
+.messages-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.message-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background: white;
+  padding: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 70, 67, 0.08);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.message-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+}
+
+.message-card.unread {
+  background: white; 
+  border-color: rgba(0, 70, 67, 0.08);
+}
+
+.message-card.selected {
+  border: 1.5px solid #004643; 
+  background: rgba(0, 70, 67, 0.06);
+  box-shadow: 0 4px 12px rgba(0, 70, 67, 0.1);
+  transform: translateY(-2px); 
+}
+
+.message-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #E5E7EB;
+}
+
+.message-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow: hidden; 
+}
+
+.message-name {
+  font-weight: 600;
+  color: #1a1a2e;
+  font-size: 1.05rem;
+  transition: color 0.2s ease;
+}
+
+.message-card.selected .message-name {
+  color: #004643;
+}
+
+.message-text {
+  color: #666b7a;
+  font-size: 0.95rem;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis; 
+}

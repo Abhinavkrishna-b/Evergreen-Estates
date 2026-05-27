@@ -1,18 +1,22 @@
 .profile-page-layout {
-  min-height: calc(100vh - 72px);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
   background-color: #FAFAFA; 
-  padding: 40px 24px;
 }
 
 .profile-container {
   max-width: 1280px;
+  width: 100%;
   margin: 0 auto;
   display: flex;
+  align-items: stretch;
   gap: 40px;
+  padding: 40px 24px;
   animation: fadeUpProfile 0.6s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-/* COLUMNs */
+/* LEFT COLUMN */
 .profile-main-column {
   flex: 2; 
   display: flex;
@@ -20,47 +24,16 @@
   gap: 48px;
 }
 
+/* RIGHT COLUMN*/
 .profile-sidebar-column {
   flex: 1; 
   display: flex;
   flex-direction: column;
-}
-
-.skeleton-placeholder {
-  background: rgba(0, 70, 67, 0.02); 
-  border: 2px dashed rgba(0, 70, 67, 0.2);
-  border-radius: 16px;
-  padding: 40px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  color: #004643; 
-  min-height: 250px;
-}
-
-.skeleton-placeholder h3 {
-  font-size: 1.2rem;
-  font-weight: 700;
-  margin-bottom: 12px;
-  letter-spacing: -0.02em;
-}
-
-.skeleton-placeholder p {
-  color: #666b7a; 
-  font-size: 0.95rem;
-  max-width: 80%;
-  line-height: 1.5;
-}
-
-.my-list-placeholder {
-  min-height: 400px;
-}
-
-.sidebar-placeholder {
-  min-height: 600px; 
-  background: rgba(3, 107, 100, 0.02);
+  
+  position: sticky;
+  top: 104px;
+  height: calc(100vh - 104px);
+  align-self: flex-start; 
 }
 
 @keyframes fadeUpProfile {
@@ -74,13 +47,14 @@
     flex-direction: column;
   }
   
-  .sidebar-placeholder {
-    min-height: 300px;
+  .profile-sidebar-column {
+    position: static;
+    height: auto;
   }
 }
 
 @media (max-width: 600px) {
-  .profile-page-layout {
+  .profile-container {
     padding: 24px 16px;
   }
 }
