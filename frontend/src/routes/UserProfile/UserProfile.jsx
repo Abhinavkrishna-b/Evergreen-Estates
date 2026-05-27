@@ -1,5 +1,6 @@
 import Navbar from '../../components/Navbar/Navbar';
 import UserInfo from '../../components/UserInfo/UserInfo';
+import SavedList from '../../components/SavedList/SavedList';
 import './UserProfile.css';
 
 const UserProfile = () => {
@@ -13,12 +14,7 @@ const UserProfile = () => {
           <div className="profile-main-column">
             <UserInfo />
 
-            {/* 2. My List (Property Feed) Placeholder */}
-            <div className="skeleton-placeholder my-list-placeholder">
-              <h3>[ My List Component ]</h3>
-              <p>The list of horizontal property cards and the 'Create New Post' button will render here.</p>
-            </div>
-
+            <SavedList />
           </div>
 
           {/* RIGHT COLUMN: Sidebar Area (flex: 1) */}
