@@ -11,6 +11,7 @@ import AdminLogin from './routes/AdminLogin/AdminLogin';
 import ContactPage from './routes/ContactPage/ContactPage';
 import AboutPage from './routes/AboutPage/AboutPage';
 import UserProfile from './routes/UserProfile/UserProfile';
+import SellerProfile from './routes/SellerProfile/SellerProfile';
 
 
 function App() {
@@ -42,6 +43,8 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
 
             <Route path="/profile" element={<UserProfile />} />
+
+            <Route path="/seller-profile" element={<SellerProfile />} />
           </Routes>
 
         </main>
