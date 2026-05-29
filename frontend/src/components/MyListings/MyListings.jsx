@@ -14,7 +14,7 @@ const MyListings = () => {
         
         {/* The Create Post Button returns! */}
         <button className="create-post-btn">
-          <FiPlus size={18} /> Create Listing
+          <FiPlus size={18} /> Create Post
         </button>
       </div>
       
