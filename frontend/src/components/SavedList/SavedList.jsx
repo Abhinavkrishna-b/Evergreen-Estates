@@ -11,9 +11,6 @@ const SavedList = () => {
         <div className="saved-list-container">
         <div className="section-header">
             <h2>My List</h2>
-            <button className="create-post-btn">
-            Create New Post
-            </button>
         </div>
         
         <div className="property-list">

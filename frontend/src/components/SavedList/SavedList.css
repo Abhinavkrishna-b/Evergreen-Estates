@@ -17,25 +17,6 @@
   margin: 0;
 }
 
-.create-post-btn {
-  background: linear-gradient(135deg, #004643 0%, #036b64 100%);
-  color: white;
-  border: 1.5px solid transparent;
-  padding: 10px 24px;
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.95rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 8px rgba(0, 70, 67, 0.15);
-}
-
-.create-post-btn:hover {
-  background: linear-gradient(135deg, #036b64 0%, #004643 100%);
-  box-shadow: 0 4px 12px rgba(0, 70, 67, 0.25);
-  transform: translateY(-2px);
-}
-
 .property-list {
   display: flex;
   flex-direction: column;
