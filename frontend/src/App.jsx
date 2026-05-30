@@ -15,6 +15,7 @@ import SellerProfile from './routes/SellerProfile/SellerProfile';
 import AdminDashboard from './routes/AdminDashboard/AdminDashboard';
 import AdminProperties from './routes/AdminProperties/AdminProperties';
 import AdminVerification from './routes/AdminVerification/AdminVerification';
+import AdminUsers from './routes/AdminUsers/AdminUsers';
 
 function App() {
 	return (
@@ -55,6 +56,8 @@ function App() {
             <Route path="/admin/properties" element={<AdminProperties />} />
 
             <Route path="/admin/verifications" element={<AdminVerification />} />
+
+            <Route path="/admin/users" element={<AdminUsers />} />
 
             <Route path="*" element={
               <div style={{ padding: '100px', textAlign: 'center', color: '#1a1a2e' }}>

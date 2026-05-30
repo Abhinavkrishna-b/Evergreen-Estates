@@ -1,0 +1,25 @@
+.admin-users-page {
+  display: flex;
+  min-height: 100vh;
+  background: #f8fafb;
+}
+
+.admin-users-content {
+  flex: 1;
+  padding: 32px;
+}
+
+.admin-users-header {
+  margin-bottom: 24px;
+}
+
+.admin-users-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 6px;
+}
+
+.admin-users-header p {
+  color: #666b7a;
+}
