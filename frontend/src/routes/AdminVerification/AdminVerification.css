@@ -1,0 +1,25 @@
+.admin-verification-page {
+  display: flex;
+  min-height: 100vh;
+  background: #f8fafb;
+}
+
+.admin-verification-content {
+  flex: 1;
+  padding: 32px;
+}
+
+.admin-verification-header {
+  margin-bottom: 24px;
+}
+
+.admin-verification-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 6px;
+}
+
+.admin-verification-header p {
+  color: #666b7a;
+}

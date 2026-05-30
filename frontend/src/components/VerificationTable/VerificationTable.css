@@ -1,0 +1,140 @@
+.verification-wrapper {
+  background: white;
+  border: 1px solid #e8ecf1;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* Stats */
+
+.verification-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+
+  padding: 24px;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.verification-stat-card {
+  background: #fafbfc;
+  border: 1px solid #eef2f5;
+  border-radius: 14px;
+  padding: 20px;
+}
+
+.verification-stat-card h3 {
+  font-size: 1.8rem;
+  color: #004643;
+  margin-bottom: 6px;
+}
+
+.verification-stat-card p {
+  color: #666b7a;
+}
+
+/* Search */
+
+.verification-toolbar {
+  padding: 24px;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.verification-search {
+  width: 100%;
+  max-width: 420px;
+
+  padding: 12px 16px;
+
+  border: 1px solid #e8ecf1;
+  border-radius: 12px;
+
+  outline: none;
+}
+
+.verification-search:focus {
+  border-color: #004643;
+}
+
+/* Table */
+
+.verification-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.verification-table thead {
+  background: #fafbfc;
+}
+
+.verification-table th {
+  text-align: left;
+  padding: 18px 24px;
+  color: #1a1a2e;
+  font-weight: 700;
+}
+
+.verification-table td {
+  padding: 18px 24px;
+  border-top: 1px solid #f0f2f5;
+}
+
+.verification-table tbody tr:hover {
+  background: #fafbfc;
+}
+
+.verification-property-title {
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 4px;
+}
+
+.verification-location {
+  font-size: 0.85rem;
+  color: #666b7a;
+}
+
+.verification-price {
+  color: #004643;
+  font-weight: 700;
+}
+
+/* Actions */
+
+.verification-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.verification-btn {
+  width: 36px;
+  height: 36px;
+
+  border-radius: 8px;
+  border: 1px solid #e8ecf1;
+
+  background: white;
+  color: #666b7a;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.verification-btn:hover {
+  border-color: #004643;
+  color: #004643;
+}
+
+.verification-btn.approve:hover {
+  border-color: #0a7a57;
+  color: #0a7a57;
+}
+
+.verification-btn.reject:hover {
+  border-color: #dc2626;
+  color: #dc2626;
+}

@@ -29,7 +29,7 @@
 
 .add-property-btn {
   border: none;
-  background: #004643;
+  background: linear-gradient(135deg, #004643 0%, #036b64 100%);
   color: white;
   padding: 12px 18px;
   border-radius: 12px;
@@ -39,5 +39,7 @@
 }
 
 .add-property-btn:hover {
-  background: #036b64;
+  background: linear-gradient(135deg, #036b64 0%, #004643 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 70, 67, 0.25);
 }
