@@ -1,0 +1,202 @@
+.property-table-wrapper {
+  background: white;
+  border: 1px solid #e8ecf1;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+/* =========================
+   Search
+========================= */
+
+.property-table-toolbar {
+  padding: 24px;
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.property-search {
+  width: 100%;
+  max-width: 420px;
+
+  padding: 12px 16px;
+
+  border: 1px solid #e8ecf1;
+  border-radius: 12px;
+
+  outline: none;
+
+  font-size: 0.95rem;
+  color: #1a1a2e;
+
+  transition: all 0.2s ease;
+}
+
+.property-search:focus {
+  border-color: #004643;
+}
+
+/* =========================
+   Filters
+========================= */
+
+.property-filters {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+
+  padding: 18px 24px;
+
+  border-bottom: 1px solid #f0f2f5;
+}
+
+.filter-btn {
+  border: none;
+  background: transparent;
+
+  color: #666b7a;
+  font-weight: 600;
+
+  padding: 8px 14px;
+  border-radius: 10px;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.filter-btn:hover {
+  color: #004643;
+  background: rgba(0, 70, 67, 0.08);
+}
+
+.filter-btn.active {
+  color: #004643;
+  background: rgba(0, 70, 67, 0.08);
+}
+
+/* =========================
+   Table
+========================= */
+
+.property-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.property-table thead {
+  background: #fafbfc;
+}
+
+.property-table th {
+  text-align: left;
+
+  padding: 18px 24px;
+
+  color: #1a1a2e;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.property-table td {
+  padding: 18px 24px;
+
+  border-top: 1px solid #f0f2f5;
+
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+
+.property-table tbody tr {
+  transition: background 0.2s ease;
+}
+
+.property-table tbody tr:hover {
+  background: #fafbfc;
+}
+
+/* =========================
+   Property Cell
+========================= */
+
+.property-title {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #1a1a2e;
+  margin-bottom: 4px;
+  line-height: 1.4;
+}
+
+.property-location {
+  font-size: 0.85rem;
+  color: #666b7a;
+}
+
+/* =========================
+   Price
+========================= */
+
+.property-price {
+  color: #004643;
+  font-weight: 700;
+  font-size: 0.95rem;
+
+  display: table-cell;
+
+  white-space: nowrap;
+
+  position: static;
+
+  overflow: visible;
+}
+
+/* =========================
+   Actions
+========================= */
+
+.action-group {
+  display: flex;
+  gap: 8px;
+}
+
+.action-btn {
+  width: 36px;
+  height: 36px;
+
+  border: 1px solid #e8ecf1;
+  background: white;
+
+  border-radius: 8px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #666b7a;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.action-btn:hover {
+  color: #004643;
+  border-color: #004643;
+  background: #f8fafb;
+}
+
+.action-btn.delete:hover {
+  color: #dc2626;
+  border-color: #dc2626;
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 1000px) {
+
+  .property-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+  }
+
+}

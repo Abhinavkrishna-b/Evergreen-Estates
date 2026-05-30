@@ -1,0 +1,43 @@
+.admin-properties-page {
+  display: flex;
+  min-height: 100vh;
+  background: #f8fafb;
+}
+
+.admin-properties-content {
+  flex: 1;
+  padding: 32px;
+}
+
+.admin-properties-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.admin-properties-header h1 {
+  color: #1a1a2e;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
+.admin-properties-header p {
+  color: #666b7a;
+  margin-top: 4px;
+}
+
+.add-property-btn {
+  border: none;
+  background: #004643;
+  color: white;
+  padding: 12px 18px;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.add-property-btn:hover {
+  background: #036b64;
+}

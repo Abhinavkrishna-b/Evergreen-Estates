@@ -1,4 +1,5 @@
 import './AdminSidebar.css';
+import { NavLink } from 'react-router-dom';
 
 import {
   FiGrid,
@@ -18,30 +19,56 @@ const AdminSidebar = () => {
 
       <nav className="sidebar-nav">
 
-        <button className="sidebar-item active">
+        <NavLink
+          to="/admin"
+          end
+          className={({ isActive }) =>
+            isActive ? 'sidebar-item active' : 'sidebar-item'
+          }
+        >
           <FiGrid />
           <span>Dashboard</span>
-        </button>
+        </NavLink>
 
-        <button className="sidebar-item">
+        <NavLink
+          to="/admin/properties"
+          className={({ isActive }) =>
+            isActive ? 'sidebar-item active' : 'sidebar-item'
+          }
+        >
           <FiHome />
           <span>Properties</span>
-        </button>
+        </NavLink>
 
-        <button className="sidebar-item">
+        <NavLink
+          to="/admin/verifications"
+          className={({ isActive }) =>
+            isActive ? 'sidebar-item active' : 'sidebar-item'
+          }
+        >
           <FiCheckCircle />
           <span>Verification</span>
-        </button>
+        </NavLink>
 
-        <button className="sidebar-item">
+        <NavLink
+          to="/admin/users"
+          className={({ isActive }) =>
+            isActive ? 'sidebar-item active' : 'sidebar-item'
+          }
+        >
           <FiUsers />
           <span>Users</span>
-        </button>
+        </NavLink>
 
-        <button className="sidebar-item">
+        <NavLink
+          to="/admin/settings"
+          className={({ isActive }) =>
+            isActive ? 'sidebar-item active' : 'sidebar-item'
+          }
+        >
           <FiSettings />
           <span>Settings</span>
-        </button>
+        </NavLink>
 
       </nav>
 

@@ -10,7 +10,7 @@ import ActionButtons from '../../components/ActionButtons/ActionButtons';
 import Footer from '../../components/Footer/Footer';
 import './PropertyDetails.css'; 
 
-const PropertyDetails = () => {
+const PropertyDetails = ({ isAdmin = false }) => {
   const { id } = useParams();
 
   const property = featuredProperties.find((item) => item.id === parseInt(id));
@@ -21,7 +21,7 @@ const PropertyDetails = () => {
 
   return (
     <div className="property-details-page">
-      <Navbar />
+      {!isAdmin && <Navbar />}
       
       <div className="container details-container">
         
@@ -40,12 +40,12 @@ const PropertyDetails = () => {
             <Map properties={[property]} />
         </div>
 
-          <ActionButtons />
+          {!isAdmin && <ActionButtons />}
         </div>
 
       </div>
 
-      <Footer/>
+      {!isAdmin && <Footer />}
     </div>
   );
 };

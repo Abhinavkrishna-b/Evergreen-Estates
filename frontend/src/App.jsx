@@ -13,6 +13,7 @@ import AboutPage from './routes/AboutPage/AboutPage';
 import UserProfile from './routes/UserProfile/UserProfile';
 import SellerProfile from './routes/SellerProfile/SellerProfile';
 import AdminDashboard from './routes/AdminDashboard/AdminDashboard';
+import AdminProperties from './routes/AdminProperties/AdminProperties';
 
 function App() {
 	return (
@@ -33,6 +34,8 @@ function App() {
             <Route path="/contact" element={<ContactPage />} />
 
             <Route path="/properties/:id" element={<PropertyDetails />} />
+            <Route path="/admin/properties/:id" element={<PropertyDetails isAdmin={true} />} /> 
+            {/* For the admin we don't need the navbar, action buttons and footer */}
 
             <Route path="/signup" element={<SignupPage />} />
 
@@ -47,6 +50,8 @@ function App() {
             <Route path="/seller-profile" element={<SellerProfile />} />
 
             <Route path="/admin" element={<AdminDashboard />} />
+
+            <Route path="/admin/properties" element={<AdminProperties />} />
 
             <Route 
             path="*" 
