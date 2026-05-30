@@ -23,3 +23,49 @@
 .admin-users-header p {
   color: #666b7a;
 }
+
+@media (max-width: 1024px) {
+  .admin-users-content {
+    padding: 20px;
+  }
+
+  .admin-users-header h1 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-users-page {
+    flex-direction: column;
+  }
+
+  .admin-users-content {
+    padding: 16px;
+  }
+
+  .admin-users-header {
+    margin-bottom: 20px;
+  }
+
+  .admin-users-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .admin-users-header p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-users-content {
+    padding: 12px;
+  }
+
+  .admin-users-header h1 {
+    font-size: 1.4rem;
+  }
+
+  .admin-users-header p {
+    font-size: 0.85rem;
+  }
+}

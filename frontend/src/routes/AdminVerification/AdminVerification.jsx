@@ -1,5 +1,4 @@
 import './AdminVerification.css';
-
 import AdminSidebar from '../../components/AdminSidebar/AdminSidebar';
 import VerificationTable from '../../components/VerificationTable/VerificationTable';
 

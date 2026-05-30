@@ -113,3 +113,82 @@
   border-color: #dc2626;
   color: #dc2626;
 }
+
+@media (max-width: 1024px) {
+  .user-table-toolbar {
+    padding: 18px;
+  }
+
+  .user-table th,
+  .user-table td {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .user-table-toolbar {
+    padding: 16px;
+  }
+
+  .user-search {
+    max-width: 100%;
+  }
+
+  .user-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .user-table th,
+  .user-table td {
+    padding: 14px 16px;
+    font-size: 0.9rem;
+  }
+
+  .role-badge {
+    font-size: 0.7rem;
+    padding: 5px 10px;
+  }
+
+  .user-action-btn {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+@media (max-width: 480px) {
+  .user-table-wrapper {
+    border-radius: 12px;
+  }
+
+  .user-table-toolbar {
+    padding: 12px;
+  }
+
+  .user-search {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .user-table th,
+  .user-table td {
+    padding: 12px;
+    font-size: 0.85rem;
+  }
+
+  .role-badge {
+    font-size: 0.65rem;
+    padding: 4px 8px;
+  }
+
+  .user-actions {
+    gap: 6px;
+  }
+
+  .user-action-btn {
+    width: 32px;
+    height: 32px;
+  }
+}

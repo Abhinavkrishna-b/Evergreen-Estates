@@ -5,10 +5,6 @@
   overflow: hidden;
 }
 
-/* =========================
-   Search
-========================= */
-
 .property-table-toolbar {
   padding: 24px;
   border-bottom: 1px solid #f0f2f5;
@@ -34,10 +30,6 @@
 .property-search:focus {
   border-color: #004643;
 }
-
-/* =========================
-   Filters
-========================= */
 
 .property-filters {
   display: flex;
@@ -72,10 +64,6 @@
   color: #004643;
   background: rgba(0, 70, 67, 0.08);
 }
-
-/* =========================
-   Table
-========================= */
 
 .property-table {
   width: 100%;
@@ -113,10 +101,6 @@
   background: #fafbfc;
 }
 
-/* =========================
-   Property Cell
-========================= */
-
 .property-title {
   font-size: 0.95rem;
   font-weight: 600;
@@ -129,10 +113,6 @@
   font-size: 0.85rem;
   color: #666b7a;
 }
-
-/* =========================
-   Price
-========================= */
 
 .property-price {
   color: #004643;
@@ -147,10 +127,6 @@
 
   overflow: visible;
 }
-
-/* =========================
-   Actions
-========================= */
 
 .action-group {
   display: flex;
@@ -187,16 +163,107 @@
   border-color: #dc2626;
 }
 
-/* =========================
-   Responsive
-========================= */
+@media (max-width: 1024px) {
+  .property-table-toolbar {
+    padding: 18px;
+  }
 
-@media (max-width: 1000px) {
+  .property-filters {
+    padding: 16px 18px;
+  }
+
+  .property-table th,
+  .property-table td {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .property-table-wrapper {
+    border-radius: 12px;
+  }
+
+  .property-table-toolbar {
+    padding: 16px;
+  }
+
+  .property-search {
+    max-width: 100%;
+  }
+
+  .property-filters {
+    padding: 14px 16px;
+    gap: 8px;
+  }
+
+  .filter-btn {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+  }
 
   .property-table {
     display: block;
     overflow-x: auto;
     white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
   }
 
+  .property-table th,
+  .property-table td {
+    padding: 14px 16px;
+    font-size: 0.9rem;
+  }
+
+  .property-title {
+    font-size: 0.9rem;
+  }
+
+  .property-location {
+    font-size: 0.8rem;
+  }
+
+  .action-btn {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+@media (max-width: 480px) {
+  .property-table-toolbar {
+    padding: 12px;
+  }
+
+  .property-search {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .property-filters {
+    padding: 12px;
+  }
+
+  .filter-btn {
+    flex: 1 1 calc(50% - 8px);
+    text-align: center;
+    font-size: 0.85rem;
+  }
+
+  .property-table th,
+  .property-table td {
+    padding: 12px;
+    font-size: 0.85rem;
+  }
+
+  .property-price {
+    font-size: 0.9rem;
+  }
+
+  .action-group {
+    gap: 6px;
+  }
+
+  .action-btn {
+    width: 32px;
+    height: 32px;
+  }
 }

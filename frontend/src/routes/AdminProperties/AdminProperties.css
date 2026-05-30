@@ -43,3 +43,58 @@
   transform: translateY(-2px);
   box-shadow: 0 12px 28px rgba(0, 70, 67, 0.25);
 }
+
+@media (max-width: 1024px) {
+  .admin-properties-content {
+    padding: 20px;
+  }
+
+  .admin-properties-header h1 {
+    font-size: 1.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-properties-page {
+    flex-direction: column;
+  }
+
+  .admin-properties-content {
+    padding: 16px;
+  }
+
+  .admin-properties-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .admin-properties-header h1 {
+    font-size: 1.6rem;
+  }
+
+  .add-property-btn {
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-properties-content {
+    padding: 12px;
+  }
+
+  .admin-properties-header h1 {
+    font-size: 1.4rem;
+  }
+
+  .admin-properties-header p {
+    font-size: 0.9rem;
+  }
+
+  .add-property-btn {
+    width: 100%;
+    padding: 12px;
+  }
+}

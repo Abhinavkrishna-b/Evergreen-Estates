@@ -141,16 +141,97 @@
   background: #036b64;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .admin-settings-content {
-    padding: 20px;
+    padding: 24px;
+  }
+
+  .admin-settings-header h1 {
+    font-size: 1.8rem;
   }
 
   .settings-form-card {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 768px) {
+  .admin-settings-page {
+    flex-direction: column;
+  }
+
+  .admin-settings-content {
+    width: 100%;
+    padding: 16px;
+    overflow-x: hidden;
+  }
+
+  .admin-settings-header {
+    margin-bottom: 20px;
+  }
+
+  .admin-settings-header h1 {
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
+
+  .admin-settings-header p {
+    font-size: 0.9rem;
+  }
+
+  .settings-form-card {
+    max-width: 100%;
     padding: 20px;
+  }
+
+  .settings-form-card h2 {
+    font-size: 1.2rem;
+  }
+
+  .password-input-wrapper input {
+    font-size: 0.9rem;
   }
 
   .update-password-btn {
     width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-settings-content {
+    padding: 12px;
+  }
+
+  .admin-settings-header h1 {
+    font-size: 1.4rem;
+  }
+
+  .admin-settings-header p {
+    font-size: 0.85rem;
+  }
+
+  .settings-form-card {
+    padding: 16px;
+    border-radius: 12px;
+  }
+
+  .settings-form-card h2 {
+    font-size: 1.1rem;
+    margin-bottom: 18px;
+  }
+
+  .form-group label {
+    font-size: 0.9rem;
+  }
+
+  .password-input-wrapper input {
+    padding: 12px 44px 12px 12px;
+    font-size: 0.85rem;
+  }
+
+  .update-password-btn {
+    padding: 12px;
+    font-size: 0.9rem;
   }
 }

@@ -138,3 +138,119 @@
   border-color: #dc2626;
   color: #dc2626;
 }
+
+@media (max-width: 1024px) {
+  .verification-stats {
+    gap: 16px;
+    padding: 18px;
+  }
+
+  .verification-toolbar {
+    padding: 18px;
+  }
+
+  .verification-table th,
+  .verification-table td {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 768px) {
+  .verification-stats {
+    grid-template-columns: 1fr;
+    padding: 16px;
+    gap: 12px;
+  }
+
+  .verification-stat-card {
+    padding: 16px;
+  }
+
+  .verification-stat-card h3 {
+    font-size: 1.5rem;
+  }
+
+  .verification-toolbar {
+    padding: 16px;
+  }
+
+  .verification-search {
+    max-width: 100%;
+  }
+
+  .verification-table {
+    display: block;
+    overflow-x: auto;
+    white-space: nowrap;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .verification-table th,
+  .verification-table td {
+    padding: 14px 16px;
+    font-size: 0.9rem;
+  }
+
+  .verification-property-title {
+    font-size: 0.9rem;
+  }
+
+  .verification-location {
+    font-size: 0.8rem;
+  }
+
+  .verification-btn {
+    width: 34px;
+    height: 34px;
+  }
+}
+
+@media (max-width: 480px) {
+  .verification-wrapper {
+    border-radius: 12px;
+  }
+
+  .verification-stats {
+    padding: 12px;
+  }
+
+  .verification-stat-card {
+    padding: 14px;
+  }
+
+  .verification-stat-card h3 {
+    font-size: 1.3rem;
+  }
+
+  .verification-stat-card p {
+    font-size: 0.85rem;
+  }
+
+  .verification-toolbar {
+    padding: 12px;
+  }
+
+  .verification-search {
+    padding: 10px 12px;
+    font-size: 0.9rem;
+  }
+
+  .verification-table th,
+  .verification-table td {
+    padding: 12px;
+    font-size: 0.85rem;
+  }
+
+  .verification-price {
+    font-size: 0.9rem;
+  }
+
+  .verification-actions {
+    gap: 6px;
+  }
+
+  .verification-btn {
+    width: 32px;
+    height: 32px;
+  }
+}
