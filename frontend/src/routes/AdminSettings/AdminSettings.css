@@ -32,11 +32,11 @@
   border: 1px solid #e8ecf1;
   border-radius: 16px;
   padding: 24px;
-  max-width: 600px;
+  max-width: 700px;
 }
 
 .settings-form-card h2 {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   font-weight: 700;
   color: #1a1a2e;
   margin-bottom: 24px;
@@ -58,12 +58,20 @@
 .form-group label {
   margin-bottom: 8px;
   color: #4b5563;
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   font-weight: 500;
 }
 
-.form-group input {
-  padding: 12px 14px;
+/* Password Input */
+
+.password-input-wrapper {
+  position: relative;
+}
+
+.password-input-wrapper input {
+  width: 100%;
+
+  padding: 14px 48px 14px 14px;
 
   border: 1px solid #e8ecf1;
   border-radius: 12px;
@@ -76,26 +84,73 @@
   transition: all 0.2s ease;
 }
 
-.form-group input:focus {
+.password-input-wrapper input:focus {
   border-color: #004643;
+}
+
+.password-toggle-btn {
+  position: absolute;
+
+  top: 50%;
+  right: 14px;
+
+  transform: translateY(-50%);
+
+  background: transparent;
+  border: none;
+
+  color: #666b7a;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  transition: color 0.2s ease;
+}
+
+.password-toggle-btn:hover {
+  color: #004643;
 }
 
 /* Button */
 
 .update-password-btn {
   align-self: flex-start;
+
+  margin-top: 8px;
+
   border: none;
   border-radius: 12px;
-  background: linear-gradient(135deg, #004643 0%, #036b64 100%);
+
+  background: #004643;
   color: white;
-  padding: 12px 18px;
+
+  padding: 12px 20px;
+
   font-weight: 600;
+  font-size: 0.95rem;
+
   cursor: pointer;
+
   transition: all 0.2s ease;
 }
 
 .update-password-btn:hover {
-  background: linear-gradient(135deg, #036b64 0%, #004643 100%);
-  transform: translateY(-2px);
-  box-shadow: 0 12px 28px rgba(0, 70, 67, 0.25);
+  background: #036b64;
+}
+
+@media (max-width: 768px) {
+  .admin-settings-content {
+    padding: 20px;
+  }
+
+  .settings-form-card {
+    padding: 20px;
+  }
+
+  .update-password-btn {
+    width: 100%;
+  }
 }
