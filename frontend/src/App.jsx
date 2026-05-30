@@ -12,7 +12,7 @@ import ContactPage from './routes/ContactPage/ContactPage';
 import AboutPage from './routes/AboutPage/AboutPage';
 import UserProfile from './routes/UserProfile/UserProfile';
 import SellerProfile from './routes/SellerProfile/SellerProfile';
-
+import AdminDashboard from './routes/AdminDashboard/AdminDashboard';
 
 function App() {
 	return (
@@ -45,6 +45,18 @@ function App() {
             <Route path="/profile" element={<UserProfile />} />
 
             <Route path="/seller-profile" element={<SellerProfile />} />
+
+            <Route path="/admin" element={<AdminDashboard />} />
+
+            <Route 
+            path="*" 
+            element={
+              <div style={{ padding: '100px', textAlign: 'center', color: '#1a1a2e' }}>
+                <h2>404 - Page Not Found</h2>
+                <p>The page you are looking for does not exist.</p>
+              </div>
+            } 
+          />
           </Routes>
 
         </main>

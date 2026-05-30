@@ -1,0 +1,19 @@
+.admin-panel {
+  background: white;
+  border: 1px solid #e8ecf1;
+  border-radius: 16px;
+  padding: 24px;
+}
+
+.admin-panel h3 {
+  color: #1a1a2e;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+.panel-item {
+  padding: 14px 0;
+  border-bottom: 1px solid #f0f2f5;
+  color: #4b5563;
+  font-weight: 600;
+}

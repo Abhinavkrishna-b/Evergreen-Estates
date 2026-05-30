@@ -1,0 +1,39 @@
+.admin-dashboard {
+  display: flex;
+  min-height: 100vh;
+  background: #f8fafb;
+}
+
+.admin-content {
+  flex: 1;
+  padding: 32px;
+}
+
+.admin-header {
+  margin-bottom: 28px;
+}
+
+.admin-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 6px;
+}
+
+.admin-header p {
+  color: #666b7a;
+  font-size: 0.95rem;
+}
+
+.admin-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+
+@media (max-width: 1000px) {
+  .admin-grid {
+    grid-template-columns: 1fr;
+  }
+}
