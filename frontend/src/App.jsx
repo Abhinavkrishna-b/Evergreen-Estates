@@ -16,6 +16,7 @@ import AdminDashboard from './routes/AdminDashboard/AdminDashboard';
 import AdminProperties from './routes/AdminProperties/AdminProperties';
 import AdminVerification from './routes/AdminVerification/AdminVerification';
 import AdminUsers from './routes/AdminUsers/AdminUsers';
+import AdminSettings from './routes/AdminSettings/AdminSettings';
 
 function App() {
 	return (
@@ -58,6 +59,8 @@ function App() {
             <Route path="/admin/verifications" element={<AdminVerification />} />
 
             <Route path="/admin/users" element={<AdminUsers />} />
+
+            <Route path="/admin/settings" element={<AdminSettings />} />
 
             <Route path="*" element={
               <div style={{ padding: '100px', textAlign: 'center', color: '#1a1a2e' }}>

@@ -1,0 +1,101 @@
+.admin-settings-page {
+  display: flex;
+  min-height: 100vh;
+  background: #f8fafb;
+}
+
+.admin-settings-content {
+  flex: 1;
+  padding: 32px;
+}
+
+.admin-settings-header {
+  margin-bottom: 24px;
+}
+
+.admin-settings-header h1 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 6px;
+}
+
+.admin-settings-header p {
+  color: #666b7a;
+  font-size: 0.95rem;
+}
+
+/* Card */
+
+.settings-form-card {
+  background: white;
+  border: 1px solid #e8ecf1;
+  border-radius: 16px;
+  padding: 24px;
+  max-width: 600px;
+}
+
+.settings-form-card h2 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: #1a1a2e;
+  margin-bottom: 24px;
+}
+
+/* Form */
+
+.settings-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 8px;
+  color: #4b5563;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.form-group input {
+  padding: 12px 14px;
+
+  border: 1px solid #e8ecf1;
+  border-radius: 12px;
+
+  outline: none;
+
+  font-size: 0.95rem;
+  color: #1a1a2e;
+
+  transition: all 0.2s ease;
+}
+
+.form-group input:focus {
+  border-color: #004643;
+}
+
+/* Button */
+
+.update-password-btn {
+  align-self: flex-start;
+  border: none;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #004643 0%, #036b64 100%);
+  color: white;
+  padding: 12px 18px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.update-password-btn:hover {
+  background: linear-gradient(135deg, #036b64 0%, #004643 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 12px 28px rgba(0, 70, 67, 0.25);
+}
