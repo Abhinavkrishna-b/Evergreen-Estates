@@ -1,8 +1,12 @@
 import './AdminProperties.css';
 import AdminSidebar from '../../components/AdminSidebar/AdminSidebar';
 import PropertyManagementTable from '../../components/PropertyManagementTable/PropertyManagementTable';
+import { useNavigate } from 'react-router-dom';
 
 const AdminProperties = () => {
+
+  const navigate = useNavigate();
+
   return (
     <div className="admin-properties-page">
 
@@ -17,7 +21,9 @@ const AdminProperties = () => {
             <p>Manage all property listings.</p>
           </div>
 
-          <button className="add-property-btn">
+          <button
+            className="add-property-btn"
+            onClick={() => navigate('/create-post')}>
             + Add Property
           </button>
 

@@ -17,6 +17,7 @@ import AdminProperties from './routes/AdminProperties/AdminProperties';
 import AdminVerification from './routes/AdminVerification/AdminVerification';
 import AdminUsers from './routes/AdminUsers/AdminUsers';
 import AdminSettings from './routes/AdminSettings/AdminSettings';
+import CreatePost from './routes/CreatePost/CreatePost';
 
 function App() {
 	return (
@@ -61,6 +62,8 @@ function App() {
             <Route path="/admin/users" element={<AdminUsers />} />
 
             <Route path="/admin/settings" element={<AdminSettings />} />
+
+            <Route path="/create-post" element={<CreatePost />} />
 
             <Route path="*" element={
               <div style={{ padding: '100px', textAlign: 'center', color: '#1a1a2e' }}>
