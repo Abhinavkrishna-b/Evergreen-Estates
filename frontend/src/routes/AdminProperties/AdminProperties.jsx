@@ -23,7 +23,7 @@ const AdminProperties = () => {
 
           <button
             className="add-property-btn"
-            onClick={() => navigate('/create-post')}>
+            onClick={() => navigate('/admin/create-post')}>
             + Add Property
           </button>
 
