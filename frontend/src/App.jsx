@@ -65,6 +65,7 @@ function App() {
 
             <Route path="/create-post" element={<CreatePost isAdmin={false} />} />
             <Route path="/admin/create-post" element={<CreatePost isAdmin={true} />} />
+            <Route path="/edit-post/:id" element={<CreatePost isAdmin={false} />} />
 
             <Route path="*" element={
               <div style={{ padding: '100px', textAlign: 'center', color: '#1a1a2e' }}>

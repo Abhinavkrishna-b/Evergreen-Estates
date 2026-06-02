@@ -3,7 +3,7 @@ import { FaBed, FaBath } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 import './HorizontalCard.css';
 
-const HorizontalCard = ({ property }) => {
+const HorizontalCard = ({ property, customActions }) => {
 
   const navigate = useNavigate();
 
@@ -76,8 +76,24 @@ const HorizontalCard = ({ property }) => {
           </div>
 
           <div className="h-card-actions">
-            <button className="icon-btn"><FiMessageSquare /></button>
-            <button className="icon-btn"><FiBookmark /></button>
+            {customActions ? (
+              customActions
+            ) : (
+              <>
+                <button 
+                  className="icon-btn" 
+                  onClick={(e) => { e.stopPropagation(); /* Add message logic here later */ }}
+                >
+                  <FiMessageSquare />
+                </button>
+                <button 
+                  className="icon-btn" 
+                  onClick={(e) => { e.stopPropagation(); /* Add bookmark logic here later */ }}
+                >
+                  <FiBookmark />
+                </button>
+              </>
+            )}
           </div>
         </div>
 
