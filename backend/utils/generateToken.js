@@ -16,9 +16,9 @@ const generateUserToken = (userId, roles) => {
 // because the secrets are different
 
 //But not yet implemented admin signup
-const generateAdminToken = (adminId, adminLevel, permissions) => {
+const generateAdminToken = (adminId, permissions) => {
   return jwt.sign(
-    { adminId, adminLevel, permissions },
+    { adminId, permissions },
     process.env.ADMIN_JWT_SECRET,
     { expiresIn: process.env.JWT_EXPIRE }
   );
