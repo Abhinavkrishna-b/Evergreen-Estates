@@ -1,6 +1,7 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
+const cors = require("cors");
 
 // Load .env variables
 dotenv.config();
@@ -10,13 +11,17 @@ connectDB();
 
 const app = express();
 app.use(express.json());
+app.use(cors({ origin: "http://localhost:5173", credentials: true }));
 
-const User = require("./models/User");
-const BuyerProfile = require("./models/BuyerProfile");
-const SellerProfile = require("./models/SellerProfile");
+// Routes
+app.use("/api/auth", require("./routes/authRoutes"));
 
 app.get("/", (req, res) => {
   res.json({ message: "Server is running. Models loaded." });
+});
+
+app.use((req, res) => {
+  res.status(404).json({ message: "Route not found" });
 });
 
 const PORT = process.env.PORT || 5000;
