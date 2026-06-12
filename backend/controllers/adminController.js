@@ -128,4 +128,42 @@ const loginAdmin = async (req, res) => {
   }
 };
 
-module.exports = { registerAdmin, loginAdmin  };
+
+const getAdminMe = async (req, res) => {
+  try {
+    // req.admin.adminId comes from verifyAdmin middleware
+    const admin = await Admin.findById(req.admin.adminId);
+
+    if (!admin) {
+      return res.status(404).json({
+        success: false,
+        message: "Admin not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: {
+        admin: {
+          id: admin._id,
+          fullName: admin.fullName,
+          email: admin.email,
+          permissions: admin.permissions,
+          activity: admin.activity,
+          createdAt: admin.createdAt,
+          lastLoginAt: admin.lastLoginAt,
+        },
+      },
+    });
+
+  } catch (error) {
+    console.error("Get admin me error:", error.message);
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch admin.",
+    });
+  }
+};
+
+
+module.exports = { registerAdmin, loginAdmin , getAdminMe };
