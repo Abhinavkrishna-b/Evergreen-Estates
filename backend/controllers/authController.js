@@ -126,4 +126,81 @@ const registerUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser };
+const loginUser = async (req, res) => {
+  try {
+    const { email, password } = req.body;
+
+    // Validate fields
+    if (!email || !password) {
+      return res.status(400).json({
+        success: false,
+        message: "Email and password are required",
+      });
+    }
+
+    // Find user — need passwordHash so override select:false
+    const user = await User.findOne({
+      email: email.toLowerCase(),
+    }).select("+passwordHash");
+
+    if (!user) {
+      // Same message for wrong email OR wrong password
+      // Never tell attacker which one is wrong
+      return res.status(401).json({
+        success: false,
+        message: "Invalid email or password",
+      });
+    }
+
+    // Check account is active
+    if (user.accountStatus !== "active") {
+      return res.status(403).json({
+        success: false,
+        message: "Your account has been suspended.",
+      });
+    }
+
+    // Compare entered password with stored hash
+    const isMatch = await bcrypt.compare(password, user.passwordHash);
+
+    if (!isMatch) {
+      return res.status(401).json({
+        success: false,
+        message: "Invalid email or password",
+      });
+    }
+
+    // Update last login time
+    user.lastLoginAt = new Date();
+    await user.save();
+
+    console.log("User logged in successfully!");
+
+    const token = generateUserToken(user._id, user.roles);
+
+    res.status(200).json({
+      success: true,
+      message: "Login successful",
+      data: {
+        user: {
+          id: user._id,
+          fullName: user.fullName,
+          email: user.email,
+          roles: user.roles,
+          avatarUrl: user.avatarUrl,
+          accountStatus: user.accountStatus,
+        },
+        token,
+      },
+    });
+
+  } catch (error) {
+    console.error("Login error:", error.message);
+    res.status(500).json({
+      success: false,
+      message: "Login failed. Please try again.",
+    });
+  }
+};
+
+module.exports = { registerUser, loginUser  };
