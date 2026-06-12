@@ -126,6 +126,7 @@ const registerUser = async (req, res) => {
   }
 };
 
+
 const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -138,14 +139,11 @@ const loginUser = async (req, res) => {
       });
     }
 
-    // Find user — need passwordHash so override select:false
     const user = await User.findOne({
       email: email.toLowerCase(),
     }).select("+passwordHash");
 
     if (!user) {
-      // Same message for wrong email OR wrong password
-      // Never tell attacker which one is wrong
       return res.status(401).json({
         success: false,
         message: "Invalid email or password",
@@ -203,4 +201,44 @@ const loginUser = async (req, res) => {
   }
 };
 
-module.exports = { registerUser, loginUser  };
+
+const getMe = async (req, res) => {
+  try {
+    // req.user.userId comes from verifyToken middleware
+    const user = await User.findById(req.user.userId);
+
+    if (!user) {
+      return res.status(404).json({
+        success: false,
+        message: "User not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: {
+        user: {
+          id: user._id,
+          fullName: user.fullName,
+          email: user.email,
+          phone: user.phone,
+          avatarUrl: user.avatarUrl,
+          roles: user.roles,
+          accountStatus: user.accountStatus,
+          isEmailVerified: user.isEmailVerified,
+          createdAt: user.createdAt,
+          lastLoginAt: user.lastLoginAt,
+        },
+      },
+    });
+
+  } catch (error) {
+    console.error("Get me error:", error.message);
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch user.",
+    });
+  }
+};
+
+module.exports = { registerUser, loginUser, getMe  };
