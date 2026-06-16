@@ -1,6 +1,9 @@
 const bcrypt = require("bcryptjs");
 const Admin = require("../models/Admin");
 const { generateAdminToken } = require("../utils/generateToken");
+const Property = require("../models/Property");
+const User = require("../models/User");
+const SellerProfile = require("../models/SellerProfile");
 
 const registerAdmin = async (req, res) => {
   try {
@@ -164,10 +167,6 @@ const getAdminMe = async (req, res) => {
     });
   }
 };
-
-const Property = require("../models/Property");
-const User = require("../models/User");
-const SellerProfile = require("../models/SellerProfile");
 
 // GET ALL PROPERTIES (Admin view)
 // GET /api/admin/properties
