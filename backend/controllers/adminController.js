@@ -165,5 +165,231 @@ const getAdminMe = async (req, res) => {
   }
 };
 
+const Property = require("../models/Property");
+const User = require("../models/User");
+const SellerProfile = require("../models/SellerProfile");
 
-module.exports = { registerAdmin, loginAdmin , getAdminMe };
+// GET ALL PROPERTIES (Admin view)
+// GET /api/admin/properties
+
+const getAllPropertiesAdmin = async (req, res) => {
+  try {
+    const { status, city, propertyType } = req.query;
+
+    const filter = {};
+    if (status) filter["verification.status"] = status;
+    if (city) filter.city = { $regex: city, $options: "i" };
+    if (propertyType) filter.propertyType = propertyType;
+
+    const properties = await Property.find(filter)
+      .populate("sellerId", "fullName email phone")
+      .sort({ createdAt: -1 });
+
+    res.status(200).json({
+      success: true,
+      count: properties.length,
+      data: { properties },
+    });
+
+  } catch (error) {
+    console.error("Admin get properties error:", error.message);
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch properties",
+    });
+  }
+};
+
+// GET PENDING PROPERTIES
+// GET /api/admin/properties/pending
+const getPendingProperties = async (req, res) => {
+  try {
+    const properties = await Property.find({
+      "verification.status": "pending",
+    })
+      .populate("sellerId", "fullName email phone")
+      .sort({ createdAt: 1 });
+
+    res.status(200).json({
+      success: true,
+      count: properties.length,
+      data: { properties },
+    });
+
+  } catch (error) {
+    console.error("Get pending error:", error.message);
+    res.status(500).json({
+      success: false,
+      message: "Failed to fetch pending properties",
+    });
+  }
+};
+
+// VERIFY PROPERTY (Approve or Reject)
+// PUT /api/admin/properties/:id/verify
+const verifyProperty = async (req, res) => {
+  try {
+    const { action, rejectionReason } = req.body;
+    // action: "approve" or "reject"
+
+    if (!action || !["approve", "reject"].includes(action)) {
+      return res.status(400).json({
+        success: false,
+        message: "Action must be approve or reject",
+      });
+    }
+
+    if (action === "reject" && !rejectionReason) {
+      return res.status(400).json({
+        success: false,
+        message: "Rejection reason is required",
+      });
+    }
+
+    const property = await Property.findById(req.params.id);
+
+    if (!property) {
+      return res.status(404).json({
+        success: false,
+        message: "Property not found",
+      });
+    }
+
+    const previousStatus = property.verification.status;
+    const newStatus = action === "approve" ? "approved" : "rejected";
+
+    // Update verification fields
+    property.verification.status = newStatus;
+    property.verification.reviewedBy = req.admin.adminId;
+    property.verification.reviewedAt = new Date();
+    property.verification.rejectionReason =
+      action === "reject" ? rejectionReason : null;
+
+    await property.save();
+
+    const statsUpdate = { $inc: {} };
+
+    if (previousStatus === "pending" && newStatus === "approved") {
+      statsUpdate.$inc["stats.pendingListings"] = -1;
+      statsUpdate.$inc["stats.activeListings"] = 1;
+    } else if (previousStatus === "pending" && newStatus === "rejected") {
+      statsUpdate.$inc["stats.pendingListings"] = -1;
+    } else if (previousStatus === "approved" && newStatus === "rejected") {
+      statsUpdate.$inc["stats.activeListings"] = -1;
+    }
+
+    await SellerProfile.findOneAndUpdate(
+      { userId: property.sellerId },
+      statsUpdate
+    );
+
+    const activityField =
+      action === "approve"
+        ? "activity.propertiesApproved"
+        : "activity.propertiesRejected";
+
+    await Admin.findByIdAndUpdate(req.admin.adminId, {
+      $inc: { [activityField]: 1 },
+    });
+
+    res.status(200).json({
+      success: true,
+      message: `Property ${newStatus} successfully`,
+      data: { property },
+    });
+
+  } catch (error) {
+    console.error("Verify property error:", error.message);
+    res.status(500).json({
+      success: false,
+      message: "Failed to verify property",
+    });
+  }
+};
+
+// SET BADGE
+// PUT /api/admin/properties/:id/badge
+const setPropertyBadge = async (req, res) => {
+  try {
+    const { badge } = req.body;
+    // badge can be null to remove badge
+
+    const validBadges = ["Featured", "Hot Deal", "New", "Smart", "Land", null];
+    if (!validBadges.includes(badge)) {
+      return res.status(400).json({
+        success: false,
+        message: "Invalid badge value",
+      });
+    }
+
+    const property = await Property.findByIdAndUpdate(
+      req.params.id,
+      { badge },
+      { returnDocument: "after" }
+    );
+
+    if (!property) {
+      return res.status(404).json({
+        success: false,
+        message: "Property not found",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      message: badge ? `Badge set to ${badge}` : "Badge removed",
+      data: { property },
+    });
+
+  } catch (error) {
+    console.error("Set badge error:", error.message);
+    res.status(500).json({
+      success: false,
+      message: "Failed to set badge",
+    });
+  }
+};
+
+// DELETE /api/admin/properties/:id
+const forceDeleteProperty = async (req, res) => {
+  try {
+    const property = await Property.findById(req.params.id);
+
+    if (!property) {
+      return res.status(404).json({
+        success: false,
+        message: "Property not found",
+      });
+    }
+
+    await Property.findByIdAndDelete(req.params.id);
+
+    // Update seller stats
+    const statsUpdate = { $inc: { "stats.totalListings": -1 } };
+
+    if (property.verification.status === "approved") {
+      statsUpdate.$inc["stats.activeListings"] = -1;
+    } else if (property.verification.status === "pending") {
+      statsUpdate.$inc["stats.pendingListings"] = -1;
+    }
+
+    await SellerProfile.findOneAndUpdate(
+      { userId: property.sellerId },
+      statsUpdate
+    );
+
+    res.status(200).json({
+      success: true,
+      message: "Property deleted by admin",
+    });
+
+  } catch (error) {
+    console.error("Force delete error:", error.message);
+    res.status(500).json({
+      success: false,
+      message: "Failed to delete property",
+    });
+  }
+};
+
+module.exports = { registerAdmin, loginAdmin , getAdminMe, getAllPropertiesAdmin, getPendingProperties, verifyProperty, setPropertyBadge, forceDeleteProperty };
