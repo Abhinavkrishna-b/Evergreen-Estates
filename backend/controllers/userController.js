@@ -8,7 +8,7 @@ const Property = require("../models/Property");
 
 const getMyProfile = async (req, res) => {
   try {
-    const user = await User.findById(req.user.userId);
+    const user = await User.findById(req.user.userId).select("-passwordHash");
 
     if (!user) {
       return res.status(404).json({
@@ -53,7 +53,7 @@ const updateMyProfile = async (req, res) => {
       req.user.userId,
       { $set: updateData },
       { returnDocument: "after", runValidators: true }
-    );
+    ).select("-passwordHash");
 
     res.status(200).json({
       success: true,
