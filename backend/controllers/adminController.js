@@ -325,7 +325,7 @@ const setPropertyBadge = async (req, res) => {
     const property = await Property.findByIdAndUpdate(
       req.params.id,
       { badge },
-      { returnDocument: "after" }
+      { new: true }
     );
 
     if (!property) {
@@ -388,64 +388,6 @@ const forceDeleteProperty = async (req, res) => {
     res.status(500).json({
       success: false,
       message: "Failed to delete property",
-    });
-  }
-};
-
-// CHANGE ADMIN PASSWORD
-// PUT /api/admin/settings/change-password
-
-const changeAdminPassword = async (req, res) => {
-  try {
-    const { currentPassword, newPassword } = req.body;
-
-    if (!currentPassword || !newPassword) {
-      return res.status(400).json({
-        success: false,
-        message: "Current and new password are required",
-      });
-    }
-
-    if (newPassword.length < 8) {
-      return res.status(400).json({
-        success: false,
-        message: "New password must be at least 8 characters",
-      });
-    }
-
-    const admin = await Admin.findById(req.admin.adminId)
-      .select("+passwordHash");
-
-    if (!admin) {
-      return res.status(404).json({
-        success: false,
-        message: "Admin not found",
-      });
-    }
-
-    const isMatch = await bcrypt.compare(currentPassword, admin.passwordHash);
-
-    if (!isMatch) {
-      return res.status(401).json({
-        success: false,
-        message: "Current password is incorrect",
-      });
-    }
-
-    const salt = await bcrypt.genSalt(10);
-    admin.passwordHash = await bcrypt.hash(newPassword, salt);
-    await admin.save();
-
-    res.status(200).json({
-      success: true,
-      message: "Password changed successfully",
-    });
-
-  } catch (error) {
-    console.error("Change password error:", error.message);
-    res.status(500).json({
-      success: false,
-      message: "Failed to change password",
     });
   }
 };
