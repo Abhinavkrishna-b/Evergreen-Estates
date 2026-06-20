@@ -2,42 +2,38 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { FiMail, FiLock, FiArrowRight } from 'react-icons/fi';
 import FormInput from '../../components/FormInput/FormInput';
+import { useAuth } from '../../context/AuthContext';
 import './LoginPage.css';
 
 const LoginPage = () => {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: ''
-  });
-
+  const [formData, setFormData] = useState({ email: '', password: '' });
   const [errors, setErrors] = useState({});
+  const [apiError, setApiError] = useState('');
   const navigate = useNavigate();
+  const { login, loading } = useAuth();
 
   const validateField = (name, value) => {
     let errorMsg = '';
-
     if (name === 'email') {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!value) errorMsg = 'Email address is required';
       else if (!emailRegex.test(value)) errorMsg = 'Please enter a valid email';
     }
-
     if (name === 'password') {
       if (!value) errorMsg = 'Password is required';
     }
-
     return errorMsg;
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-
     const fieldError = validateField(name, value);
     setErrors(prev => ({ ...prev, [name]: fieldError }));
+    setApiError('');
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     const masterErrors = {};
@@ -51,23 +47,37 @@ const LoginPage = () => {
       return;
     }
 
-    console.log('Login credentials clear! Authenticating user payload:', formData);
-    navigate('/');
-    // Backend logic will come here
+    const result = await login(formData.email, formData.password);
+
+    if (result.success) {
+      if (result.roles.includes('seller')) {
+        navigate('/seller-profile');
+      } else {
+        navigate('/profile');
+      }
+    } else {
+      setApiError(result.message);
+    }
   };
 
   return (
     <div className="login-layout">
       <div className="login-card">
-        
+
         <div className="login-header">
           <h1>Welcome back</h1>
           <p>Sign in to manage your <span className="highlight-text">Evergreen Estates</span> dashboard</p>
         </div>
 
+        {apiError && (
+          <p style={{ color: 'red', textAlign: 'center', marginBottom: '12px' }}>
+            {apiError}
+          </p>
+        )}
+
         <form onSubmit={handleSubmit} className="login-form" noValidate>
           <div className="form-fields-container">
-            <FormInput 
+            <FormInput
               Icon={FiMail}
               type="email"
               placeholder="Email Address"
@@ -77,9 +87,8 @@ const LoginPage = () => {
               required={true}
               error={errors.email}
             />
-            
             <div className="password-field-group">
-              <FormInput 
+              <FormInput
                 Icon={FiLock}
                 isPassword={true}
                 placeholder="Password"
@@ -95,13 +104,14 @@ const LoginPage = () => {
             </div>
           </div>
 
-          <button type="submit" className="login-submit-cta">
-            Sign In <FiArrowRight className="cta-arrow" />
+          <button type="submit" className="login-submit-cta" disabled={loading}>
+            {loading ? 'Signing in...' : 'Sign In'}
+            {!loading && <FiArrowRight className="cta-arrow" />}
           </button>
         </form>
 
         <div className="login-footer">
-          <p>Don't have an account? <Link to="/signup" className="signup-link">Sign up</Link></p>
+          <p>Don&apos;t have an account? <Link to="/signup" className="signup-link">Sign up</Link></p>
         </div>
 
       </div>

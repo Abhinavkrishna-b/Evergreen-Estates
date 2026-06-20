@@ -1,8 +1,9 @@
 import { useState } from 'react';
-import { Link, useNavigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FiUser, FiMail, FiLock, FiHome, FiBriefcase, FiArrowRight } from 'react-icons/fi';
 import FormInput from '../../components/FormInput/FormInput';
 import RoleCard from '../../components/RoleCard/RoleCard';
+import { useAuth } from '../../context/AuthContext';
 import './SignupPage.css';
 
 const SignupPage = () => {
@@ -15,24 +16,21 @@ const SignupPage = () => {
   });
 
   const [errors, setErrors] = useState({});
+  const [apiError, setApiError] = useState('');
   const navigate = useNavigate();
-
-  // Individual Field Rule Checker
+  const { register, loading } = useAuth();
 
   const validateField = (name, value) => {
     let errorMsg = '';
-
     if (name === 'fullName') {
       if (!value.trim()) errorMsg = 'Full name is required';
       else if (value.trim().length < 3) errorMsg = 'Name must be at least 3 characters';
     }
-
     if (name === 'email') {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       if (!value) errorMsg = 'Email address is required';
       else if (!emailRegex.test(value)) errorMsg = 'Please enter a valid email address';
     }
-
     if (name === 'password') {
       if (!value) errorMsg = 'Password is required';
       else if (value.length < 8) errorMsg = 'Must be at least 8 characters';
@@ -40,23 +38,19 @@ const SignupPage = () => {
         errorMsg = 'Requires uppercase, lowercase, and a number';
       }
     }
-
     if (name === 'confirmPassword') {
       if (!value) errorMsg = 'Please confirm your password';
       else if (value !== formData.password) errorMsg = 'Passwords do not match';
     }
-
     return errorMsg;
   };
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-
-    // Run real-time validation check
     const fieldError = validateField(name, value);
     setErrors(prev => ({ ...prev, [name]: fieldError }));
-
+    setApiError('');
     if (name === 'password' && formData.confirmPassword) {
       setErrors(prev => ({
         ...prev,
@@ -69,14 +63,11 @@ const SignupPage = () => {
     setFormData(prev => ({ ...prev, role }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    // Master execution validate check before API sendoff
-    const formFields = Object.keys(formData);
     const masterErrors = {};
-
-    formFields.forEach(field => {
+    Object.keys(formData).forEach(field => {
       if (field !== 'role') {
         const error = validateField(field, formData[field]);
         if (error) masterErrors[field] = error;
@@ -85,37 +76,55 @@ const SignupPage = () => {
 
     if (Object.keys(masterErrors).length > 0) {
       setErrors(masterErrors);
-      return; // Absolute Halt
+      return;
     }
 
-    console.log('Validation Passed! Processing Submission Payload:', formData);
-    navigate('/login');
-    // Proceed with backend 
+    const result = await register(
+      formData.fullName,
+      formData.email,
+      formData.password,
+      formData.role
+    );
+
+    if (result.success) {
+      if (formData.role === 'seller') {
+        navigate('/seller-profile');
+      } else {
+        navigate('/profile');
+      }
+    } else {
+      setApiError(result.message);
+    }
   };
 
   return (
     <div className="signup-layout">
       <div className="signup-card">
-        
+
         <div className="signup-header">
           <h1>Create account</h1>
           <p>Get started with <span className="highlight-text">Evergreen Estates</span></p>
         </div>
 
+        {apiError && (
+          <p style={{ color: 'red', textAlign: 'center', marginBottom: '12px' }}>
+            {apiError}
+          </p>
+        )}
+
         <form onSubmit={handleSubmit} className="signup-form" noValidate>
-          
           <div className="role-section">
             <p className="role-label">I am a</p>
             <div className="role-cards-container">
-              <RoleCard 
-                Icon={FiHome} 
-                title="Buyer" 
+              <RoleCard
+                Icon={FiHome}
+                title="Buyer"
                 isSelected={formData.role === 'buyer'}
                 onClick={() => setRole('buyer')}
               />
-              <RoleCard 
-                Icon={FiBriefcase} 
-                title="Seller" 
+              <RoleCard
+                Icon={FiBriefcase}
+                title="Seller"
                 isSelected={formData.role === 'seller'}
                 onClick={() => setRole('seller')}
               />
@@ -123,7 +132,7 @@ const SignupPage = () => {
           </div>
 
           <div className="form-fields-container">
-            <FormInput 
+            <FormInput
               Icon={FiUser}
               type="text"
               placeholder="Full Name"
@@ -133,8 +142,7 @@ const SignupPage = () => {
               required={true}
               error={errors.fullName}
             />
-            
-            <FormInput 
+            <FormInput
               Icon={FiMail}
               type="email"
               placeholder="Email Address"
@@ -144,8 +152,7 @@ const SignupPage = () => {
               required={true}
               error={errors.email}
             />
-            
-            <FormInput 
+            <FormInput
               Icon={FiLock}
               isPassword={true}
               placeholder="Password"
@@ -155,8 +162,7 @@ const SignupPage = () => {
               required={true}
               error={errors.password}
             />
-            
-            <FormInput 
+            <FormInput
               Icon={FiLock}
               isPassword={true}
               placeholder="Confirm Password"
@@ -168,8 +174,9 @@ const SignupPage = () => {
             />
           </div>
 
-          <button type="submit" className="submit-cta-button">
-            Create Account <FiArrowRight className="cta-arrow" />
+          <button type="submit" className="submit-cta-button" disabled={loading}>
+            {loading ? 'Creating account...' : 'Create Account'}
+            {!loading && <FiArrowRight className="cta-arrow" />}
           </button>
         </form>
 
