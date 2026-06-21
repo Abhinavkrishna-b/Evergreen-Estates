@@ -4,19 +4,23 @@ import { useNavigate } from 'react-router-dom';
 import './HorizontalCard.css';
 
 const HorizontalCard = ({ property, customActions }) => {
-
   const navigate = useNavigate();
+
+  // Determine if the property is a plot of land based on the backend enum
+  const isLand = property.propertyType === 'Land' || property.propertyType === 'Agriculture Land';
 
   return (
     <article 
       className="horizontal-card"
-      onClick={() => navigate(`/properties/${property.id}`)}
+      // Updated to use MongoDB's _id
+      onClick={() => navigate(`/properties/${property._id}`)}
       style={{ cursor: 'pointer' }}
     >
       
       <div className="h-card-image-wrapper">
         <img 
-          src={property.image} 
+          // Updated to coverImage with a fallback
+          src={property.coverImage || "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&fit=crop"} 
           alt={property.title} 
           className="h-card-image" 
         />
@@ -26,49 +30,62 @@ const HorizontalCard = ({ property, customActions }) => {
       <div className="h-card-content">
         
         <div className="h-card-top">
-          <span className="h-card-type">{property.type}</span>
+          {/* Updated to propertyType */}
+          <span className="h-card-type">{property.propertyType}</span>
           <h3 className="h-card-title">{property.title}</h3>
           <div className="h-card-location">
             <FiMapPin size={15} />
-            <span>{property.location}</span>
+            {/* Combined locality and city from the backend */}
+            <span>{property.locality}, {property.city}</span>
           </div>
         </div>
 
         <div className="h-card-middle">
-          <span className="h-card-price">{property.price}</span>
+          {/* Added ₹ symbol and Indian comma formatting to the raw number */}
+          <span className="h-card-price">₹{property.price?.toLocaleString('en-IN')}</span>
         </div>
 
         <div className="h-card-bottom">
           <div className="h-card-features">
-            {property.isLand ? (
+            {isLand ? (
               <>
-                <div className="h-feature-item">
-                  <FiCheckCircle />
-                  <span>{property.approval}</span>
-                </div>
-                <div className="h-feature-item">
-                  <FiCompass />
-                  <span>{property.facing}</span>
-                </div>
-                <div className="h-feature-item">
-                  <FiMaximize2 />
-                  <span>{property.landArea}</span>
-                </div>
+                {property.approvalAuthority && (
+                  <div className="h-feature-item">
+                    <FiCheckCircle />
+                    <span>{property.approvalAuthority}</span>
+                  </div>
+                )}
+                {property.facingDirection && (
+                  <div className="h-feature-item">
+                    <FiCompass />
+                    <span>{property.facingDirection}</span>
+                  </div>
+                )}
+                {property.area && (
+                  <div className="h-feature-item">
+                    <FiMaximize2 />
+                    <span>{property.area}</span>
+                  </div>
+                )}
               </>
             ) : (
               <>
-                <div className="h-feature-item">
-                  <FaBed />
-                  <span>{property.beds} Beds</span>
-                </div>
-                <div className="h-feature-item">
-                  <FaBath />
-                  <span>{property.baths} Baths</span>
-                </div>
-                {property.sqft && (
+                {property.beds && (
+                  <div className="h-feature-item">
+                    <FaBed />
+                    <span>{property.beds} Beds</span>
+                  </div>
+                )}
+                {property.baths && (
+                  <div className="h-feature-item">
+                    <FaBath />
+                    <span>{property.baths} Baths</span>
+                  </div>
+                )}
+                {property.area && (
                   <div className="h-feature-item">
                     <FiMaximize2 />
-                    <span>{property.sqft} sqft</span>
+                    <span>{property.area}</span>
                   </div>
                 )}
               </>

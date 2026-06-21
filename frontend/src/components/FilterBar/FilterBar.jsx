@@ -13,8 +13,8 @@ const FilterBar = ({ filters, handleFilterChange, onSearch }) => {
           <input
             type="text"
             placeholder="City Location"
-            value={filters.location}
-            onChange={(e) => handleFilterChange('location', e.target.value)}
+            value={filters.city}
+            onChange={(e) => handleFilterChange('city', e.target.value)}
           />
         </div>
       </div>
@@ -24,10 +24,10 @@ const FilterBar = ({ filters, handleFilterChange, onSearch }) => {
           <label>
             <FiFilter className="filter-icon" /> Purpose
           </label>
-          <select value={filters.type} onChange={(e) => handleFilterChange('type', e.target.value)}>
-            <option value="any">Any</option>
-            <option value="buy">Buy</option>
-            <option value="rent">Rent</option>
+          <select value={filters.purpose} onChange={(e) => handleFilterChange('purpose', e.target.value)}>
+            <option value="Any">Any</option>
+            <option value="Buy">Buy</option>
+            <option value="Rent">Rent</option>
           </select>
         </div>
         
@@ -35,12 +35,13 @@ const FilterBar = ({ filters, handleFilterChange, onSearch }) => {
           <label>
             <FiHome className="filter-icon" /> Property Type
           </label>
-          <select value={filters.property} onChange={(e) => handleFilterChange('property', e.target.value)}>
-            <option value="any">Any</option>
-            <option value="apartment">Apartment</option>
-            <option value="house">House</option>
-            <option value="villa">Villa</option>
-            <option value="land">Land</option>
+          <select value={filters.propertyType} onChange={(e) => handleFilterChange('propertyType', e.target.value)}>
+            <option value="Any">Any</option>
+            <option value="Apartment">Apartment</option>
+            <option value="House">House</option>
+            <option value="Villa">Villa</option>
+            <option value="Land">Land</option>
+            <option value="Agriculture Land">Agriculture Land</option>
           </select>
         </div>
         
@@ -75,8 +76,8 @@ const FilterBar = ({ filters, handleFilterChange, onSearch }) => {
           <input
             type="number"
             placeholder="Any"
-            value={filters.bedroom}
-            onChange={(e) => handleFilterChange('bedroom', e.target.value)}
+            value={filters.beds}
+            onChange={(e) => handleFilterChange('beds', e.target.value)}
           />
         </div>
         

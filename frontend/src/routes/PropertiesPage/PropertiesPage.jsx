@@ -5,30 +5,25 @@ import Footer from '../../components/Footer/Footer';
 import FilterBar from '../../components/FilterBar/FilterBar';
 import HorizontalCard from '../../components/HorizontalCard/HorizontalCard';
 import Map from '../../components/Map/Map';
-import { featuredProperties } from '../../constants/properties';
-import { parsePriceRange } from '../../utils/searchUtils';
 import './PropertiesPage.css';
+import { getProperties } from '../../services/propertyService';
 
 const PropertiesPage = () => {
   // Read URL parameters
   const [searchParams] = useSearchParams();
-  
-  const urlLocation = searchParams.get('location') || '';
-  const urlPropertyType = searchParams.get('property') || 'any';
-  const urlPriceRange = searchParams.get('priceRange') || '';
-  
-  const { minPrice: initialMin, maxPrice: initialMax } = parsePriceRange(urlPriceRange);
+
+  const [properties, setProperties] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState('');
 
   const [filters, setFilters] = useState({
-    location: urlLocation,
-    type: 'any',
-    property: urlPropertyType,
-    minPrice: initialMin,
-    maxPrice: initialMax,
-    bedroom: ''
-  });
-
-  const [filteredResults, setFilteredResults] = useState([]);
+      city: searchParams.get('city') || '',
+      purpose: searchParams.get('purpose') || '',
+      propertyType: searchParams.get('propertyType') || '',
+      minPrice: searchParams.get('minPrice') || '',
+      maxPrice: searchParams.get('maxPrice') || '',
+      beds: searchParams.get('beds') || '',
+    });
 
   useEffect(() => {
     handleSearch();
@@ -39,28 +34,18 @@ const PropertiesPage = () => {
     setFilters(prev => ({ ...prev, [key]: value }));
   };
 
-  const handleSearch = () => {
-    const results = featuredProperties.filter((property) => {
-      
-      const matchLoc = !filters.location || property.location.toLowerCase().includes(filters.location.toLowerCase());
-      
-      const matchPurpose = !filters.type || filters.type === 'any' || property.purpose === filters.type;
-      
-      const matchProp = !filters.property || filters.property === 'any' || property.propertyType === filters.property;
-      
-      const min = parseInt(filters.minPrice);
-      const matchMinPrice = isNaN(min) || property.rawPrice >= min;
-      
-      const max = parseInt(filters.maxPrice);
-      const matchMaxPrice = isNaN(max) || property.rawPrice <= max;
-      
-      const beds = parseInt(filters.bedroom);
-      const matchBed = isNaN(beds) || (property.beds && property.beds >= beds);
-
-      return matchLoc && matchPurpose && matchProp && matchMinPrice && matchMaxPrice && matchBed;
-    });
-
-    setFilteredResults(results);
+  const handleSearch = async () => {
+    setLoading(true);
+    setError('');
+    try {
+      const result = await getProperties(filters);
+      setProperties(result);
+    } catch (err) {
+      setError('Failed to load properties. Please try again.');
+      console.error(err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -72,7 +57,7 @@ const PropertiesPage = () => {
         
         <div className="properties-list-container">
           <div className="list-header">
-            <h2>Search results for <span>{filters.location || "All Locations"}</span></h2>
+            <h2>Search results for <span>{filters.city || "All Locations"}</span></h2>
           </div>
 
           <FilterBar 
@@ -82,22 +67,28 @@ const PropertiesPage = () => {
           />
 
           <div className="properties-scroll-list">
-            {filteredResults.length > 0 ? (
-              filteredResults.map((property) => (
-                <HorizontalCard key={property.id} property={property} />
+
+            {loading && <p style={{ padding: '20px' }}>Loading properties...</p>}
+            {error && <p style={{ padding: '20px', color: 'red' }}>{error}</p>}
+
+            {!loading && !error && properties.length > 0 ? (
+              properties.map((property) => (
+                <HorizontalCard key={property._id || property.id} property={property} />
               ))
             ) : (
-              <div className="empty-results" style={{textAlign: 'center', padding: '40px', color: '#666b7a'}}>
-                <h3>No properties found</h3>
-                <p>Try adjusting your filters.</p>
-              </div>
+              !loading && !error && (
+                <div className="empty-results" style={{textAlign: 'center', padding: '40px', color: '#666b7a'}}>
+                  <h3>No properties found</h3>
+                  <p>Try adjusting your filters.</p>
+                </div>
+              )
             )}
           </div>
           
         </div>
 
         <div className="properties-map-container">
-          <Map properties={filteredResults} />
+          <Map properties={properties} />
         </div>
 
       </div>
