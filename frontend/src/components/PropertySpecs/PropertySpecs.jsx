@@ -2,6 +2,9 @@ import { FiCompass, FiCheckCircle, FiLayers, FiInfo, FiHome, FiZap, FiDroplet, F
 import './PropertySpecs.css';
 
 const PropertySpecs = ({ property }) => {
+  
+  const isLand = property.propertyType === 'Land' || property.propertyType === 'Agriculture Land';
+
   return (
     <div className="property-specs-card">
       <h3 className="specs-title">Property Overview</h3>
@@ -19,7 +22,7 @@ const PropertySpecs = ({ property }) => {
           <FiLayers className="specs-icon" />
           <div className="specs-text">
             <span className="specs-label">Configuration</span>
-            <span className="specs-value">{property.configuration || 'Standard Specification'}</span>
+            <span className="specs-value">{property.configuration || property.area || 'N/A'}</span>
           </div>
         </div>
 
@@ -27,7 +30,7 @@ const PropertySpecs = ({ property }) => {
           <FiHome className="specs-icon" />
           <div className="specs-text">
             <span className="specs-label">Property Type</span>
-            <span className="specs-value text-capitalize">{property.type || 'N/A'}</span>
+            <span className="specs-value text-capitalize">{property.propertyType || 'N/A'}</span>
           </div>
         </div>
 
@@ -35,17 +38,17 @@ const PropertySpecs = ({ property }) => {
           <FiCompass className="specs-icon" />
           <div className="specs-text">
             <span className="specs-label">Facing Direction</span>
-            <span className="specs-value">{property.facing || 'N/A'}</span>
+            <span className="specs-value">{property.facingDirection || 'N/A'}</span>
           </div>
         </div>
 
-        {property.isLand ? (
+        {isLand ? (
           <>
             <div className="specs-item">
               <FiCheckCircle className="specs-icon" />
               <div className="specs-text">
                 <span className="specs-label">Approval Authority</span>
-                <span className="specs-value">{property.approvalStatus || property.approval || 'N/A'}</span>
+                <span className="specs-value">{property.approvalAuthority || 'N/A'}</span>
               </div>
             </div>
 
