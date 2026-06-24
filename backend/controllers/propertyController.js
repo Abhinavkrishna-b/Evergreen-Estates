@@ -10,7 +10,7 @@ const createProperty = async (req, res) => {
       facingDirection, area,
       configuration, beds, baths, furnishing, parking, policies,
       approvalAuthority, soilType, waterSource, electricity,
-      coverImage, images,
+      coverImage, images, badge,
     } = req.body;
 
     // Validate required fields
@@ -36,6 +36,7 @@ const createProperty = async (req, res) => {
       approvalAuthority, soilType, waterSource, electricity,
       coverImage: coverImage || null,
       images: images || [],
+      badge: badge || null,
       verification: { status: "pending" },
     });
 
