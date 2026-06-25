@@ -13,6 +13,7 @@ import AboutPage from './routes/AboutPage/AboutPage';
 import UserProfile from './routes/UserProfile/UserProfile';
 import SellerProfile from './routes/SellerProfile/SellerProfile';
 import AdminDashboard from './routes/AdminDashboard/AdminDashboard';
+import AdminProtectedRoute from './routes/AdminProtectedRoute/AdminProtectedRoute';
 import AdminProperties from './routes/AdminProperties/AdminProperties';
 import AdminVerification from './routes/AdminVerification/AdminVerification';
 import AdminUsers from './routes/AdminUsers/AdminUsers';
@@ -53,7 +54,11 @@ function App() {
 
             <Route path="/seller-profile" element={<SellerProfile />} />
 
-            <Route path="/admin" element={<AdminDashboard />} />
+            <Route path="/admin" element={
+                <AdminProtectedRoute>
+                  <AdminDashboard />
+                </AdminProtectedRoute>
+            }/>
 
             <Route path="/admin/properties" element={<AdminProperties />} />
 
@@ -82,3 +87,4 @@ function App() {
 }
 
 export default App;
+
