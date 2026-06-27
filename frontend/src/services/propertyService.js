@@ -71,3 +71,5 @@ export const getSavedProperties = async () => {
   const { data } = await API.get("/users/saved");
   return data.data.savedProperties;
 };
+
+export { startOrGetConversation } from './messageService';
