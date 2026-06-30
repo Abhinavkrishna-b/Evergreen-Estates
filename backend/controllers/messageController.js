@@ -1,6 +1,5 @@
 const Conversation = require("../models/Conversation");
 const Message = require("../models/Message");
-const Property = require("../models/Property");
 
 // START OR GET CONVERSATION
 // POST /api/messages/conversations

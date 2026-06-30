@@ -28,7 +28,6 @@ const SavedList = () => {
   const handleMessage = (e, propertyId) => {
     e.stopPropagation();
     console.log(`Open message for property: ${propertyId}`);
-    // Messages module — connect later
   };
 
   const handleRemove = async (e, propertyId) => {
