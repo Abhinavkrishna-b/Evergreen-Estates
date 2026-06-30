@@ -4,14 +4,6 @@ const Property = require("../models/Property");
 
 // START OR GET CONVERSATION
 // POST /api/messages/conversations
-// Body: { propertyId, sellerId }
-// Protected: logged in user (buyer initiates)
-//
-// If conversation already exists → return it
-// If not → create new one
-// This is called when buyer clicks "Send a Message"
-// on PropertyDetails page
-
 const startOrGetConversation = async (req, res) => {
   try {
     const { propertyId, sellerId } = req.body;
@@ -24,7 +16,6 @@ const startOrGetConversation = async (req, res) => {
       });
     }
 
-    // Prevent seller messaging themselves
     if (buyerId === sellerId) {
       return res.status(400).json({
         success: false,
@@ -32,7 +23,6 @@ const startOrGetConversation = async (req, res) => {
       });
     }
 
-    // Check if conversation already exists
     let conversation = await Conversation.findOne({
       propertyId,
       buyerId,
@@ -49,7 +39,6 @@ const startOrGetConversation = async (req, res) => {
       });
     }
 
-    // Create new conversation
     const newConversation = await Conversation.create({
       propertyId,
       buyerId,
@@ -77,11 +66,6 @@ const startOrGetConversation = async (req, res) => {
 
 // GET MY CONVERSATIONS
 // GET /api/messages/conversations
-// Protected: any logged in user
-//
-// Returns all conversations where current user
-// is either the buyer or the seller
-
 const getMyConversations = async (req, res) => {
   try {
     const userId = req.user.userId;
@@ -93,7 +77,6 @@ const getMyConversations = async (req, res) => {
       .populate("buyerId", "fullName avatarUrl")
       .populate("sellerId", "fullName avatarUrl")
       .sort({ lastMessageAt: -1 });
-      // Most recent conversation first
 
     res.status(200).json({
       success: true,
@@ -112,14 +95,11 @@ const getMyConversations = async (req, res) => {
 
 // GET MESSAGES IN A CONVERSATION
 // GET /api/messages/conversations/:conversationId
-// Protected: only participants can read
-
 const getMessages = async (req, res) => {
   try {
     const { conversationId } = req.params;
     const userId = req.user.userId;
 
-    // Check user is a participant
     const conversation = await Conversation.findById(conversationId);
 
     if (!conversation) {
@@ -143,10 +123,11 @@ const getMessages = async (req, res) => {
     // Mark messages as read for this user
     const isBuyer = conversation.buyerId.toString() === userId;
     await Conversation.findByIdAndUpdate(conversationId, {
-      [isBuyer ? "unreadBuyer" : "unreadSeller"]: 0,
+      $set: {
+        [isBuyer ? "unreadBuyer" : "unreadSeller"]: 0,
+      },
     });
 
-    // Get all messages
     const messages = await Message.find({ conversationId })
       .populate("senderId", "fullName avatarUrl")
       .sort({ createdAt: 1 });
@@ -166,15 +147,8 @@ const getMessages = async (req, res) => {
   }
 };
 
-// SEND MESSAGE (HTTP fallback)
+// SEND MESSAGE
 // POST /api/messages
-// Body: { conversationId, text }
-// Protected: participants only
-//
-// This is the HTTP fallback.
-// The real-time path goes through Socket.io.
-// Both paths save to MongoDB.
-
 const sendMessage = async (req, res) => {
   try {
     const { conversationId, text } = req.body;
@@ -207,7 +181,6 @@ const sendMessage = async (req, res) => {
       });
     }
 
-    // Save message to DB
     const message = await Message.create({
       conversationId,
       senderId,
@@ -217,13 +190,16 @@ const sendMessage = async (req, res) => {
     const populated = await Message.findById(message._id)
       .populate("senderId", "fullName avatarUrl");
 
-    // Update conversation preview
     const isBuyer = conversation.buyerId.toString() === senderId;
+
     await Conversation.findByIdAndUpdate(conversationId, {
-      lastMessage: text.trim(),
-      lastMessageAt: new Date(),
-      // Increment unread for the OTHER person
-      [isBuyer ? "unreadSeller" : "unreadBuyer"]: { $inc: 1 },
+      $set: {
+        lastMessage: text.trim(),
+        lastMessageAt: new Date(),
+      },
+      $inc: {
+        [isBuyer ? "unreadSeller" : "unreadBuyer"]: 1,
+      },
     });
 
     res.status(201).json({

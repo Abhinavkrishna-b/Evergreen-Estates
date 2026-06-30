@@ -1,25 +1,22 @@
 import { useState, useRef, useEffect } from 'react';
 import { FiX, FiSend } from 'react-icons/fi';
 import { useAuth } from '../../context/AuthContext';
-import { useSocket } from '../../context/SocketContext';
-import { getMessages } from '../../services/messageService';
+import { getMessages, sendMessage } from '../../services/messageService';
 import './ChatBox.css';
+
+const POLL_INTERVAL = 3000; // refetch messages every 3 seconds
 
 const ChatBox = ({ conversation, onClose, onMessageSent }) => {
   const { user } = useAuth();
-  const { socket } = useSocket();
   const [messages, setMessages] = useState([]);
   const [inputText, setInputText] = useState('');
   const [loading, setLoading] = useState(true);
+  const [sending, setSending] = useState(false);
   const messagesEndRef = useRef(null);
 
-  // Determine the other person in the conversation
   const isBuyer = conversation.buyerId?._id === user?.id;
-  const otherPerson = isBuyer
-    ? conversation.sellerId
-    : conversation.buyerId;
+  const otherPerson = isBuyer ? conversation.sellerId : conversation.buyerId;
 
-  // Scroll to bottom whenever messages change
   const scrollToBottom = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   };
@@ -28,65 +25,47 @@ const ChatBox = ({ conversation, onClose, onMessageSent }) => {
     scrollToBottom();
   }, [messages]);
 
-  // Fetch existing messages when ChatBox opens
-  useEffect(() => {
-    const fetchMessages = async () => {
-      try {
-        const data = await getMessages(conversation._id);
-        setMessages(data);
-      } catch (err) {
-        console.error('Failed to load messages:', err);
-      } finally {
-        setLoading(false);
-      }
-    };
+  // Fetch messages function — reused for initial load and polling
+  const fetchMessages = async () => {
+    try {
+      const data = await getMessages(conversation._id);
+      setMessages(data);
+    } catch (err) {
+      console.error('Failed to load messages:', err);
+    } finally {
+      setLoading(false);
+    }
+  };
 
+  // Initial load
+  useEffect(() => {
     fetchMessages();
   }, [conversation._id]);
 
+  // Poll for new messages every few seconds
+  // Simple way to simulate real-time without Socket.io
   useEffect(() => {
-    if (!socket) return;
+    const interval = setInterval(fetchMessages, POLL_INTERVAL);
+    return () => clearInterval(interval);
+  }, [conversation._id]);
 
-    // Join this specific conversation's socket room
-    socket.emit('joinConversation', conversation._id);
+  const handleSend = async () => {
+    if (!inputText.trim() || sending) return;
 
-    // Listen for new messages in real-time
-    const handleReceiveMessage = (newMessage) => {
-      setMessages(prev => {
-        const exists = prev.some(m => m._id === newMessage._id);
-        if (exists) return prev;
-        return [...prev, newMessage];
-      });
-    };
-
-    socket.on('receiveMessage', handleReceiveMessage);
-
-    // Mark messages as read when opening the chat
-    socket.emit('markRead', {
-      conversationId: conversation._id,
-      userId: user?.id,
-    });
-
-    return () => {
-      socket.off('receiveMessage', handleReceiveMessage);
-    };
-  }, [socket, conversation._id, user?.id]);
-
-  const handleSend = () => {
-    if (!inputText.trim() || !socket) return;
-
-    // Emit message via Socket.io
-    // Server saves to DB and broadcasts to room
-    socket.emit('sendMessage', {
-      conversationId: conversation._id,
-      senderId: user.id,
-      text: inputText.trim(),
-    });
-
-    // Update conversation list preview in Messages panel
-    onMessageSent?.(conversation._id, inputText.trim());
-
+    setSending(true);
+    const textToSend = inputText.trim();
     setInputText('');
+
+    try {
+      const newMessage = await sendMessage(conversation._id, textToSend);
+      setMessages(prev => [...prev, newMessage]);
+      onMessageSent?.(conversation._id, textToSend);
+    } catch (err) {
+      console.error('Failed to send message:', err);
+      alert('Failed to send. Please try again.');
+    } finally {
+      setSending(false);
+    }
   };
 
   const handleKeyDown = (e) => {
@@ -96,7 +75,6 @@ const ChatBox = ({ conversation, onClose, onMessageSent }) => {
     }
   };
 
-  // Format timestamp
   const formatTime = (dateString) => {
     const date = new Date(dateString);
     const now = new Date();
@@ -113,17 +91,16 @@ const ChatBox = ({ conversation, onClose, onMessageSent }) => {
   return (
     <div className="chatbox-overlay">
 
-      {/* HEADER */}
       <div className="chatbox-header">
         <div className="chatbox-user-info">
           <img
             src={otherPerson?.avatarUrl ||
               "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=100"}
-            alt={otherPerson?.fullName}
+            alt={otherPerson?.fullName || 'User'}
             className="chatbox-avatar"
           />
           <div>
-            <span className="chatbox-name">{otherPerson?.fullName}</span>
+            <span className="chatbox-name">{otherPerson?.fullName || 'User'}</span>
             {conversation.propertyId?.title && (
               <p style={{ fontSize: '11px', color: '#888', margin: 0 }}>
                 Re: {conversation.propertyId.title}
@@ -136,9 +113,7 @@ const ChatBox = ({ conversation, onClose, onMessageSent }) => {
         </button>
       </div>
 
-      {/* MESSAGE HISTORY */}
       <div className="chatbox-body">
-
         {loading && (
           <p style={{ textAlign: 'center', color: '#888', padding: '20px' }}>
             Loading messages...
@@ -154,10 +129,7 @@ const ChatBox = ({ conversation, onClose, onMessageSent }) => {
         {messages.map(msg => {
           const isMe = msg.senderId?._id === user?.id;
           return (
-            <div
-              key={msg._id}
-              className={`chat-message ${isMe ? 'msg-mine' : 'msg-theirs'}`}
-            >
+            <div key={msg._id} className={`chat-message ${isMe ? 'msg-mine' : 'msg-theirs'}`}>
               <p>{msg.text}</p>
               <span className="msg-time">{formatTime(msg.createdAt)}</span>
             </div>
@@ -167,7 +139,6 @@ const ChatBox = ({ conversation, onClose, onMessageSent }) => {
         <div ref={messagesEndRef} />
       </div>
 
-      {/* INPUT */}
       <div className="chatbox-footer">
         <textarea
           placeholder="Type a message..."
@@ -180,7 +151,7 @@ const ChatBox = ({ conversation, onClose, onMessageSent }) => {
         <button
           className="chatbox-send-btn"
           onClick={handleSend}
-          disabled={!inputText.trim()}
+          disabled={!inputText.trim() || sending}
         >
           <FiSend size={18} />
         </button>

@@ -17,3 +17,8 @@ export const getMessages = async (conversationId) => {
   const { data } = await API.get(`/messages/conversations/${conversationId}`);
   return data.data.messages;
 };
+
+export const sendMessage = async (conversationId, text) => {
+  const { data } = await API.post("/messages", { conversationId, text });
+  return data.data.message;
+};

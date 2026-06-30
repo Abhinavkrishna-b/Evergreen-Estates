@@ -4,15 +4,12 @@ import './index.css'
 import App from './App.jsx'
 import { AuthProvider } from "./context/AuthContext.jsx";
 import { AdminAuthProvider } from "./context/AdminAuthContext.jsx";
-import { SocketProvider } from "./context/SocketContext.jsx";
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <AuthProvider>
       <AdminAuthProvider>
-        <SocketProvider>
-          <App />
-        </SocketProvider>
+        <App />
       </AdminAuthProvider>
     </AuthProvider>
   </StrictMode>
