@@ -166,7 +166,7 @@ VITE_API_URL=http://localhost:5000/api
 ## Development Notes
 
 - Protected routes require `Authorization: Bearer <token>` header.
-- User tokens and admin tokens use **separate JWT secrets** — a user token cannot access admin routes and vice versa.
+- User tokens and admin tokens use **separate JWT secrets** - a user token cannot access admin routes and vice versa.
 - Role-based routes are used.
 - Messaging uses HTTP polling - ChatBox polls every 3s, conversation list polls every 5s.
 - Property images are currently stored as URLs; Cloudinary upload integration is a planned improvement.
