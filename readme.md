@@ -18,7 +18,7 @@ Evergreen Estates is a full-stack real estate marketplace built with a Node.js/E
 
 ## Project Structure
 
-\`\`\`
+```
 evergreen-estates/
 ├── backend/
 │   ├── config/
@@ -108,7 +108,7 @@ evergreen-estates/
 │   └── package.json
 │
 └── README.md
-\`\`\`
+```
 
 ## Quick Start
 
